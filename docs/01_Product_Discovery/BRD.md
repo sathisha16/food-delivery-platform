@@ -59,3 +59,42 @@ A Business-to-Consumer (B2C) multi-sided marketplace platform that connects Cust
 ## 2.4 Current Document Status
 
 This document outlines the business requirements identified during the Product Discovery phase and serves as a foundational reference for Requirement Engineering, System Design, and subsequent development activities.
+
+# 3. Business Problem Statement
+
+The online food delivery industry has transformed the way customers order food. However, existing food delivery platforms continue to face several operational and customer experience challenges that affect customers, restaurants, delivery partners, and the overall business ecosystem.
+
+## 3.1 Customer Problems
+
+Customers currently experience several challenges while ordering food online, including:
+
+* Delays in order pickup by delivery partners.
+* Lack of visibility into the reasons for delivery delays.
+* Late deliveries resulting in food that is no longer fresh or at the desired temperature.
+* Limited or no compensation for delayed deliveries.
+* Reduced trust due to inconsistent delivery experiences.
+
+## 3.2 Restaurant Problems
+
+Restaurants encounter multiple operational challenges, including:
+
+* Frequent order cancellations and returned orders.
+* Fake or invalid orders that result in business losses.
+* Delays in food pickup due to limited delivery partner availability.
+* Difficulty gaining visibility despite maintaining good food quality and service.
+* Inaccurate demand forecasting, leading to over-preparation or under-preparation of food.
+
+## 3.3 Delivery Partner Problems
+
+Delivery partners face several day-to-day operational issues, including:
+
+* Long travel distances between restaurants and customer locations.
+* Insufficient order allocation, resulting in lower earnings.
+* Lack of proper incentives for consistent performance.
+* Incorrect or incomplete customer addresses.
+* Inefficient route planning, leading to increased travel time and fuel consumption.
+
+## 3.4 Business Opportunity
+
+Addressing these challenges provides a significant business opportunity to improve customer satisfaction, increase restaurant growth, enhance delivery partner productivity, reduce refund-related losses, and build a trusted, reliable, and scalable food delivery ecosystem.
+
