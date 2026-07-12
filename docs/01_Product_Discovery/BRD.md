@@ -180,3 +180,111 @@ External stakeholders are organizations or individuals outside the company who c
 ### 5.4 Stakeholder Summary
 
 The Food Delivery Platform is a multi-sided marketplace where Customers, Restaurants, and Delivery Partners are both target users and primary stakeholders. Internal stakeholders are responsible for developing and operating the platform, while external stakeholders contribute to business continuity, scalability, and regulatory compliance.
+
+## 6. Target Users
+
+Target Users are the primary users who directly interact with the Food Delivery Platform to perform business operations. The success of the platform depends on providing a seamless and efficient experience for these users.
+
+### 6.1 Customer
+
+Customers use the platform to browse restaurants, place food orders, make online payments, and track their deliveries.
+
+#### Customer Goals
+
+* Order food quickly and conveniently.
+* Receive fresh and high-quality food.
+* Get accurate delivery time estimates.
+* Track orders in real time.
+* Receive timely support and fair compensation for eligible delayed deliveries.
+
+---
+
+### 6.2 Restaurant
+
+Restaurants use the platform to manage menus, receive customer orders, prepare food, and coordinate with delivery partners.
+
+#### Restaurant Goals
+
+* Receive more customer orders.
+* Increase business revenue.
+* Reduce order cancellations and returned orders.
+* Manage incoming orders efficiently.
+* Improve customer satisfaction through timely food preparation.
+
+---
+
+### 6.3 Delivery Partner
+
+Delivery Partners use the platform to accept delivery requests, pick up food from restaurants, and deliver orders to customers.
+
+#### Delivery Partner Goals
+
+* Receive more delivery requests.
+* Increase daily earnings.
+* Reduce travel time through efficient route planning.
+* Complete more deliveries each day.
+* Earn incentives and rewards based on performance.
+
+---
+
+### 6.4 Target User Summary
+
+The Food Delivery Platform is designed around three primary target users: Customers, Restaurants, and Delivery Partners. Each user group has distinct goals and expectations, and the platform aims to provide features that address their specific needs while ensuring a seamless end-to-end food delivery experience.
+
+## 7. MVP Scope
+
+The Minimum Viable Product (MVP) defines the minimum set of features required to launch the Food Delivery Platform successfully. The objective of the MVP is to solve the core business problem by enabling customers to order food, restaurants to manage orders, and delivery partners to complete deliveries efficiently.
+
+### 7.1 Must Have (MVP)
+
+The following features are mandatory for the first release of the platform.
+
+| Feature           | Description                                                       |
+| ----------------- | ----------------------------------------------------------------- |
+| User Registration | Allow new users to create an account.                             |
+| User Login        | Authenticate users securely.                                      |
+| Restaurant Search | Search and browse available restaurants.                          |
+| Restaurant Menu   | Display menu items with pricing and availability.                 |
+| Shopping Cart     | Allow customers to add and manage food items before checkout.     |
+| Online Payment    | Support secure online payment for food orders.                    |
+| Order Tracking    | Enable customers to track the order from preparation to delivery. |
+
+### 7.2 Should Have
+
+These features improve the user experience but are not mandatory for the initial release.
+
+| Feature       | Description                                                  |
+| ------------- | ------------------------------------------------------------ |
+| Reviews       | Allow customers to review completed orders.                  |
+| Ratings       | Allow customers to rate restaurants and delivery experience. |
+| Notifications | Send order status updates to users.                          |
+| Order History | Display previously completed orders.                         |
+
+### 7.3 Could Have
+
+These features are planned for future releases after the MVP has been successfully launched and validated.
+
+| Feature                  | Description                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------- |
+| Coupons                  | Promotional discounts and offers.                                               |
+| Scheduled Delivery       | Allow customers to schedule food delivery in advance.                           |
+| Favorite Chef            | Allow customers to choose a preferred chef, subject to restaurant availability. |
+| Live Kitchen             | Provide live kitchen monitoring to improve customer trust and transparency.     |
+| Delay Compensation       | Provide compensation based on predefined delivery delay policies.               |
+| Recurring Orders         | Enable automatic repeat ordering for frequently ordered meals.                  |
+| Delivery Partner Rewards | Reward delivery partners based on performance metrics.                          |
+| Voice Assistant          | Support voice-based food search and ordering.                                   |
+
+### 7.4 Out of Scope (MVP)
+
+The following features are intentionally excluded from the initial release and will be evaluated in future product roadmap discussions.
+
+* Artificial Intelligence (AI) based food recommendations.
+* Drone or autonomous food delivery.
+* Smart kitchen automation.
+* Multi-country operations.
+* Advanced analytics and business intelligence dashboards.
+
+### 7.5 MVP Summary
+
+The first release of the Food Delivery Platform focuses on delivering the core ordering, payment, and delivery workflow. Additional capabilities will be introduced in future releases based on customer feedback, business priorities, and product roadmap decisions.
