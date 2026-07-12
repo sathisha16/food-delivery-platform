@@ -134,3 +134,49 @@ The primary business objectives of the Food Delivery Platform are to create valu
 * Improve operational efficiency across the platform.
 * Build a trusted brand capable of attracting long-term business growth and future investment opportunities.
 
+## 5. Stakeholders
+
+Stakeholders are individuals, teams, or organizations that are directly or indirectly affected by the Food Delivery Platform or have an interest in its success. They influence business decisions, product development, operations, or the overall growth of the platform.
+
+### 5.1 Primary Stakeholders
+
+Primary stakeholders are essential for the day-to-day operation of the platform. Without them, the core business cannot function.
+
+| Stakeholder      | Role                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Customer         | Places food orders through the platform.                     |
+| Restaurant       | Prepares and fulfills customer orders.                       |
+| Delivery Partner | Picks up food from restaurants and delivers it to customers. |
+
+### 5.2 Internal Stakeholders
+
+Internal stakeholders are responsible for building, maintaining, operating, and growing the platform.
+
+| Stakeholder           | Responsibility                                                       |
+| --------------------- | -------------------------------------------------------------------- |
+| CEO / Founder         | Defines the business vision and strategy.                            |
+| Product Manager       | Defines product requirements and product roadmap.                    |
+| Engineering Team      | Designs, develops, and maintains the platform.                       |
+| QA Team               | Ensures software quality through testing.                            |
+| DevOps / Cloud Team   | Manages infrastructure, deployment, and platform availability.       |
+| UI/UX Design Team     | Designs intuitive and user-friendly interfaces.                      |
+| Marketing Team        | Promotes the platform and acquires new customers.                    |
+| Finance Team          | Manages revenue, payments, refunds, and financial operations.        |
+| Customer Support Team | Handles customer complaints, support requests, and issue resolution. |
+
+### 5.3 External Stakeholders
+
+External stakeholders are organizations or individuals outside the company who contribute to or influence the success of the platform.
+
+| Stakeholder                         | Responsibility                                                                 |
+| ----------------------------------- | ------------------------------------------------------------------------------ |
+| Customers                           | Use the platform to order food.                                                |
+| Restaurants                         | Partner with the platform to sell food.                                        |
+| Delivery Partners                   | Deliver customer orders.                                                       |
+| Payment Gateway Providers           | Process secure online payments.                                                |
+| Cloud Service Providers             | Provide cloud infrastructure and hosting services.                             |
+| Government & Regulatory Authorities | Ensure compliance with legal, taxation, food safety, and business regulations. |
+
+### 5.4 Stakeholder Summary
+
+The Food Delivery Platform is a multi-sided marketplace where Customers, Restaurants, and Delivery Partners are both target users and primary stakeholders. Internal stakeholders are responsible for developing and operating the platform, while external stakeholders contribute to business continuity, scalability, and regulatory compliance.
