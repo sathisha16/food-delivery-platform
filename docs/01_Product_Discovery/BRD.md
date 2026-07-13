@@ -288,3 +288,237 @@ The following features are intentionally excluded from the initial release and w
 ### 7.5 MVP Summary
 
 The first release of the Food Delivery Platform focuses on delivering the core ordering, payment, and delivery workflow. Additional capabilities will be introduced in future releases based on customer feedback, business priorities, and product roadmap decisions.
+
+## 8. Business Rules
+
+Business Rules define the operational policies that govern how the Food Delivery Platform functions. These rules ensure consistent business behavior across customers, restaurants, delivery partners, and platform operations. They also serve as the foundation for software requirements, validations, business logic, and testing.
+
+---
+
+### 8.1 Customer Rules
+
+| Rule ID | Business Rule                                                                                                |
+| ------- | ------------------------------------------------------------------------------------------------------------ |
+| BR-001  | Customers must register and verify their mobile number before placing an order.                              |
+| BR-002  | Customers cannot place orders from restaurants that are currently closed.                                    |
+| BR-003  | Customers must provide a valid delivery address before checkout.                                             |
+| BR-004  | Customers can place orders only within the restaurant's supported delivery radius.                           |
+| BR-005  | Customers can cancel an order only before the restaurant starts food preparation.                            |
+| BR-006  | Customers can submit ratings and reviews only after successful delivery.                                     |
+| BR-007  | Customers can submit only one review per completed order.                                                    |
+| BR-008  | Customers are eligible for compensation only according to the approved compensation policy.                  |
+| BR-009  | Customers can configure recurring orders only for eligible restaurants and menu items.                       |
+| BR-010  | Customers can select a preferred chef only if the restaurant supports the feature and the chef is available. |
+
+---
+
+### 8.2 Restaurant Rules
+
+| Rule ID | Business Rule                                                                                    |
+| ------- | ------------------------------------------------------------------------------------------------ |
+| BR-101  | Restaurants must complete business verification before joining the platform.                     |
+| BR-102  | Restaurants can receive orders only during their operating hours.                                |
+| BR-103  | Restaurants must maintain an up-to-date menu with accurate pricing and availability.             |
+| BR-104  | Restaurants cannot cancel accepted orders except under approved exceptional business conditions. |
+| BR-105  | Restaurants must prepare food within the estimated preparation time whenever possible.           |
+| BR-106  | Restaurants must package food according to food safety guidelines.                               |
+| BR-107  | Restaurants must maintain valid food safety and regulatory certifications.                       |
+| BR-108  | Restaurants are responsible for maintaining accurate preparation time estimates.                 |
+
+---
+
+### 8.3 Delivery Partner Rules
+
+| Rule ID | Business Rule                                                                                              |
+| ------- | ---------------------------------------------------------------------------------------------------------- |
+| BR-201  | Every delivery partner must complete identity verification before onboarding.                              |
+| BR-202  | Delivery partners must possess a valid driving license and required legal documents.                       |
+| BR-203  | Delivery partners must pick up accepted orders within the defined pickup time.                             |
+| BR-204  | Delivery partners must not tamper with or open customer food packages.                                     |
+| BR-205  | Delivery partners must update delivery status during each stage of the delivery lifecycle.                 |
+| BR-206  | Delivery partners must follow the assigned delivery route unless navigation requires an alternative route. |
+| BR-207  | Delivery partners must contact the customer if they are unable to locate the delivery address.             |
+| BR-208  | During the MVP release, one delivery partner can handle only one active delivery at a time.                |
+
+---
+
+### 8.4 Order Rules
+
+| Rule ID | Business Rule                                                                                                                          |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| BR-301  | Every confirmed order shall have a unique Order ID.                                                                                    |
+| BR-302  | Each order must be associated with exactly one customer and one restaurant.                                                            |
+| BR-303  | Order status must follow the defined lifecycle (Placed → Accepted → Preparing → Picked Up → Out for Delivery → Delivered / Cancelled). |
+| BR-304  | Restaurants cannot modify confirmed orders after food preparation has started.                                                         |
+| BR-305  | Customers cannot modify an order after it has been accepted by the restaurant.                                                         |
+| BR-306  | Every completed order shall be stored in the customer's order history.                                                                 |
+
+---
+
+### 8.5 Payment Rules
+
+| Rule ID | Business Rule                                                                                         |
+| ------- | ----------------------------------------------------------------------------------------------------- |
+| BR-401  | Online payment orders shall be confirmed only after successful payment.                               |
+| BR-402  | Cash on Delivery (COD) orders may be confirmed without upfront payment, subject to business policies. |
+| BR-403  | Failed online payments shall not create confirmed orders.                                             |
+| BR-404  | Refunds shall be processed only for eligible cancelled or failed orders.                              |
+| BR-405  | Every payment transaction must have a unique Transaction ID.                                          |
+
+---
+
+### 8.6 Delivery & Compensation Rules
+
+| Rule ID | Business Rule                                                                              |
+| ------- | ------------------------------------------------------------------------------------------ |
+| BR-501  | Every confirmed order must be assigned to a delivery partner before dispatch.              |
+| BR-502  | Customers are not eligible for compensation if the delivery delay is less than 15 minutes. |
+| BR-503  | Delivery delay compensation shall follow the approved compensation policy.                 |
+| BR-504  | Compensation eligibility shall be verified before processing refunds or credits.           |
+| BR-505  | Delivery status updates must be visible to customers throughout the delivery lifecycle.    |
+
+#### 8.6.1 Delivery Delay Compensation Policy
+
+| Delivery Delay       |    Compensation |
+| -------------------- | --------------: |
+| Less than 15 minutes | No Compensation |
+| 15–20 minutes        |      25% Refund |
+| 21–30 minutes        |      50% Refund |
+| 31–45 minutes        |      80% Refund |
+| More than 45 minutes |     100% Refund |
+
+---
+
+### 8.7 Platform Rules
+
+| Rule ID | Business Rule                                                                                       |
+| ------- | --------------------------------------------------------------------------------------------------- |
+| BR-601  | Every customer, restaurant, and delivery partner shall have a unique system identifier.             |
+| BR-602  | Important order events shall generate platform notifications.                                       |
+| BR-603  | User personal information shall be protected according to applicable privacy and security policies. |
+| BR-604  | Platform audit logs shall be maintained for critical business operations.                           |
+| BR-605  | The platform shall maintain data integrity and consistency across all business transactions.        |
+
+---
+
+### 8.8 Business Rule Summary
+
+The above business rules define the core operational policies of the Food Delivery Platform. These rules will serve as the primary reference for Requirement Engineering (SRS), backend business logic, API validations, database constraints, and test case design throughout the software development lifecycle.
+
+## 9. Business Assumptions
+
+Business Assumptions are conditions that are expected to be true during the design, development, and operation of the Food Delivery Platform. These assumptions help define the scope of the product and reduce ambiguity during requirement analysis.
+
+### 9.1 Customer Assumptions
+
+| Assumption ID | Assumption                                                                       |
+| ------------- | -------------------------------------------------------------------------------- |
+| BA-001        | Customers have access to a smartphone or supported device.                       |
+| BA-002        | Customers have an active internet connection while using the platform.           |
+| BA-003        | Customers provide accurate delivery addresses and contact information.           |
+| BA-004        | Customers are available to receive calls from delivery partners during delivery. |
+| BA-005        | Customers place genuine orders and do not intentionally misuse the platform.     |
+| BA-006        | Customers provide honest ratings and reviews after completed orders.             |
+| BA-007        | Customers request refunds or compensation only for genuine issues.               |
+| BA-008        | Customers use the platform according to its Terms and Conditions.                |
+
+---
+
+### 9.2 Restaurant Assumptions
+
+| Assumption ID | Assumption                                                            |
+| ------------- | --------------------------------------------------------------------- |
+| BA-101        | Restaurants are legally registered businesses.                        |
+| BA-102        | Restaurants maintain valid food safety certifications.                |
+| BA-103        | Restaurants prepare food according to estimated preparation times.    |
+| BA-104        | Restaurants maintain accurate menu availability and pricing.          |
+| BA-105        | Restaurants package food safely before handover to delivery partners. |
+| BA-106        | Restaurants maintain sufficient inventory for listed menu items.      |
+| BA-107        | Restaurants update their operating hours accurately.                  |
+
+---
+
+### 9.3 Delivery Partner Assumptions
+
+| Assumption ID | Assumption                                                                             |
+| ------------- | -------------------------------------------------------------------------------------- |
+| BA-201        | Delivery partners possess valid identity verification and legal documents.             |
+| BA-202        | Delivery partners have a smartphone with GPS functionality.                            |
+| BA-203        | Delivery partners maintain an active internet connection while delivering orders.      |
+| BA-204        | Delivery partners follow traffic rules and safe driving practices.                     |
+| BA-205        | Delivery partners handle customer orders responsibly and professionally.               |
+| BA-206        | Delivery partners update delivery status accurately throughout the delivery lifecycle. |
+
+---
+
+### 9.4 Platform Assumptions
+
+| Assumption ID | Assumption                                                                   |
+| ------------- | ---------------------------------------------------------------------------- |
+| BA-301        | Payment gateway services remain available during transactions.               |
+| BA-302        | Notification services deliver messages successfully under normal conditions. |
+| BA-303        | Cloud infrastructure provides high availability and reliability.             |
+| BA-304        | Third-party map and navigation services provide accurate location data.      |
+| BA-305        | External services used by the platform meet agreed service availability.     |
+
+---
+
+### 9.5 Business Assumption Summary
+
+These assumptions provide the baseline conditions under which the Food Delivery Platform is expected to operate. Any significant deviation from these assumptions may require changes to business requirements, software requirements, or operational processes.
+
+## 10. Business Constraints
+
+Business Constraints define the limitations, policies, and mandatory conditions that the Food Delivery Platform must operate within. These constraints influence business decisions, product design, implementation, and overall platform operations.
+
+### 10.1 Customer Constraints
+
+| Constraint ID | Constraint                                                                       |
+| ------------- | -------------------------------------------------------------------------------- |
+| BC-001        | Customers must register using a valid mobile number before placing an order.     |
+| BC-002        | Customers must provide a valid delivery address.                                 |
+| BC-003        | Customers can place orders only within the restaurant's supported delivery area. |
+| BC-004        | Customers must comply with the platform's Terms and Conditions.                  |
+| BC-005        | Customers must use a supported smartphone or web browser to access the platform. |
+
+---
+
+### 10.2 Restaurant Constraints
+
+| Constraint ID | Constraint                                                                     |
+| ------------- | ------------------------------------------------------------------------------ |
+| BC-101        | Restaurants must complete business verification before onboarding.             |
+| BC-102        | Restaurants must possess valid food safety and business licenses.              |
+| BC-103        | Restaurants must maintain accurate menu pricing and availability.              |
+| BC-104        | Restaurants can receive orders only during configured business hours.          |
+| BC-105        | Restaurants must maintain updated contact information for business operations. |
+
+---
+
+### 10.3 Delivery Partner Constraints
+
+| Constraint ID | Constraint                                                                                   |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| BC-201        | Delivery partners must complete identity verification before onboarding.                     |
+| BC-202        | Delivery partners must possess a valid driving license where legally required.               |
+| BC-203        | Delivery partners must maintain an active smartphone with GPS functionality.                 |
+| BC-204        | Delivery partners must maintain internet connectivity while accepting and delivering orders. |
+| BC-205        | Delivery partners must comply with applicable traffic laws and safety regulations.           |
+
+---
+
+### 10.4 Platform Constraints
+
+| Constraint ID | Constraint                                                                                   |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| BC-301        | The platform must comply with applicable data privacy and security regulations.              |
+| BC-302        | The platform must integrate with approved payment gateway providers.                         |
+| BC-303        | The platform depends on third-party map and navigation services for location-based features. |
+| BC-304        | The platform must maintain business data integrity and transaction consistency.              |
+| BC-305        | The platform must support secure communication between all participating stakeholders.       |
+
+---
+
+### 10.5 Business Constraint Summary
+
+The above constraints define the mandatory business and operational boundaries within which the Food Delivery Platform must function. These constraints will influence software architecture, database design, API design, business validations, and operational procedures throughout the software development lifecycle.
