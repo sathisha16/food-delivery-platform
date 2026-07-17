@@ -940,6 +940,324 @@ In all failure scenarios, the system shall return a generic authentication failu
 
 ### 3.1.3 Email Verification
 
+#### 3.1.3.1 Description
+
+The **Email Verification** functionality enables the Food Delivery Platform to verify the ownership and validity of the customer's registered Email Address during the account registration process. The system shall send a One-Time Password (OTP) or verification link to the customer's registered Email Address and allow the customer to verify the email before activating the account.
+
+The platform shall permit account activation only after successful email verification. Upon successful verification, the system shall update the customer's email verification status, record the verification activity for auditing purposes, and allow the customer to proceed with the remaining account activation process.
+
+The Email Verification functionality shall ensure that only customers with verified Email Addresses can access protected platform features, thereby improving account security, communication reliability, and fraud prevention.
+
+#### 3.1.3.2 Actors
+
+##### Primary Actor
+
+- Customer
+
+##### Supporting Actors
+
+- Authentication Service
+- Email Service
+- OTP Verification Service
+- Audit Logging Service
+
+#### 3.1.3.3 Preconditions
+
+The following conditions shall be satisfied before email verification can be performed:
+
+1. The customer shall have successfully completed the registration process.
+2. The customer account shall exist in the system.
+3. The customer's Email Address shall not already be verified.
+4. The customer account shall be in **PENDING_VERIFICATION** status.
+5. The Email Service shall be operational.
+6. The OTP Verification Service shall be available.
+7. The platform shall be accessible over a secure HTTPS connection.
+8. The customer shall have access to the registered Email Address.
+
+#### 3.1.3.4 Trigger
+
+The email verification process is initiated immediately after successful customer registration or when the customer explicitly requests to resend the verification email.
+
+#### 3.1.3.5 Input Fields
+
+| Field Name | Data Type | Mandatory | Description | Validation |
+|------------|-----------|-----------|-------------|------------|
+| Email Address | String | Yes | Registered Email Address associated with the customer account. | Shall be a valid registered Email Address. |
+| Email OTP | Numeric | Yes | One-Time Password (OTP) sent to the customer's registered Email Address for verification. | Shall contain 6 numeric digits and match the latest active OTP issued by the system. |
+| Resend OTP | Action | No | Allows the customer to request a new Email OTP when the previous OTP has expired or has not been received. | Subject to OTP resend policy and rate limiting. |
+
+**Notes:**
+
+- The Email Address displayed on the verification screen shall be the one provided during customer registration.
+- The Email Address shall not be editable during the verification process.
+- The Email OTP shall remain masked while being entered only where supported by the user interface.
+- The system shall issue only one active Email OTP at a time.
+- Requesting a new OTP shall invalidate any previously issued unexpired OTP.
+
+#### 3.1.3.6 Business Rules
+
+1. The system shall generate a unique six (6)-digit numeric One-Time Password (OTP) for every Email Verification request.
+
+2. The generated Email OTP shall be valid for **10 minutes** from the time of generation.
+
+3. The system shall allow only one active Email OTP for a customer account at any given time.
+
+4. The system shall invalidate all previously generated unexpired Email OTPs whenever a new Email OTP is issued.
+
+5. The system shall allow the customer to request a new Email OTP using the **Resend OTP** functionality.
+
+6. The system shall permit a maximum of **three (3) OTP resend requests within one hour**. Any additional resend requests within the same period shall be rejected.
+
+7. The system shall allow a maximum of **five (5) Email OTP verification attempts** for a single OTP. After the maximum attempts are exceeded, the OTP shall be invalidated automatically.
+
+8. The system shall verify the submitted OTP only if it matches the latest active OTP issued for the customer account.
+
+9. The system shall reject expired, invalid, previously used, or revoked OTPs.
+
+10. The system shall mark the Email Verification Status as **VERIFIED** immediately after successful OTP verification.
+
+11. The system shall record the Email Verification Timestamp upon successful verification.
+
+12. The system shall prevent repeated Email Verification for an Email Address that has already been successfully verified.
+
+13. The system shall activate the customer account only after both the Email Address and Mobile Number have been successfully verified.
+
+14. The system shall record every OTP generation, resend request, successful verification, and failed verification attempt in the audit log.
+
+15. The system shall enforce HTTPS for all Email Verification requests and responses.
+
+16. The system shall ensure that OTP values are securely generated, stored, transmitted, and validated in accordance with the platform's security standards.
+
+17. The system shall ensure that authentication or account activation is not permitted solely based on successful Email Verification until all mandatory account activation requirements have been satisfied.
+
+18. The system shall display generic verification failure messages without exposing internal validation details or security-sensitive information.
+
+#### 3.1.3.7 Validations
+
+| Validation Category | Validation Rule |
+|---------------------|-----------------|
+| Email Address | The Email Address shall be associated with an existing customer account. |
+| Email Verification Status | Email Verification shall be permitted only if the Email Address has not already been verified. |
+| OTP Required | The Email OTP field shall be mandatory for every verification request. |
+| OTP Format | The Email OTP shall contain exactly six (6) numeric digits. |
+| OTP Expiry | The OTP shall be accepted only if it is within the configured validity period of **10 minutes**. |
+| OTP Match | The submitted OTP shall exactly match the latest active OTP generated for the customer account. |
+| OTP Reuse | A previously used OTP shall not be accepted for verification. |
+| OTP Attempts | A maximum of **five (5)** verification attempts shall be permitted for a single OTP. |
+| OTP Resend | The customer shall not exceed **three (3)** OTP resend requests within one hour. |
+| Account Status | Email Verification shall be permitted only for customer accounts in **PENDING_VERIFICATION** status. |
+| Secure Communication | All Email Verification requests shall be processed only over HTTPS. |
+| Input Sanitization | All user inputs shall be sanitized to prevent SQL Injection, Cross-Site Scripting (XSS), HTML Injection, Command Injection, and other malicious input attacks. |
+| Audit Validation | Every OTP generation, resend request, successful verification, and failed verification attempt shall be recorded in the audit log. |
+| Error Messages | Verification failure responses shall not disclose internal validation details or security-sensitive information. |
+
+#### 3.1.3.8 Main Flow
+
+1. The customer completes the registration process.
+
+2. The system generates a unique six (6)-digit Email OTP.
+
+3. The system securely stores the generated OTP along with its expiration time.
+
+4. The system sends the Email OTP to the customer's registered Email Address.
+
+5. The system displays the Email Verification page.
+
+6. The customer enters the received Email OTP.
+
+7. The customer clicks the **Verify** button.
+
+8. The system validates all mandatory input fields.
+
+9. The system validates the format of the submitted OTP.
+
+10. The system verifies that the customer account exists.
+
+11. The system verifies that the Email Address has not already been verified.
+
+12. The system verifies that the customer account is in **PENDING_VERIFICATION** status.
+
+13. The system verifies that the submitted OTP has not expired.
+
+14. The system verifies that the submitted OTP matches the latest active OTP issued for the customer account.
+
+15. The system verifies that the maximum OTP verification attempt limit has not been exceeded.
+
+16. Upon successful verification, the system marks the Email Verification Status as **VERIFIED**.
+
+17. The system records the Email Verification Timestamp.
+
+18. The system invalidates the verified OTP to prevent reuse.
+
+19. The system records the successful Email Verification event in the audit log.
+
+20. The system checks whether the customer's Mobile Number has also been successfully verified.
+
+21. If both Email Address and Mobile Number are verified, the system updates the Customer Account Status to **ACTIVE**.
+
+22. The system notifies the customer that Email Verification has been completed successfully.
+
+23. The system redirects the customer to the next step in the account activation process or the Login page, based on the account verification status.
+
+#### 3.1.3.9 Alternate Flows
+
+##### AF-1: Invalid Email OTP
+
+1. The customer enters an incorrect Email OTP.
+2. The system rejects the verification request.
+3. The system increments the failed OTP verification attempt counter.
+4. The system records the failed verification attempt in the audit log.
+5. The system displays a generic verification failure message.
+6. The customer is allowed to retry verification if the maximum attempt limit has not been exceeded.
+
+---
+
+##### AF-2: Expired Email OTP
+
+1. The customer submits an Email OTP after its validity period has expired.
+2. The system rejects the verification request.
+3. The system invalidates the expired OTP.
+4. The system informs the customer that the OTP has expired.
+5. The customer is prompted to request a new Email OTP.
+
+---
+
+##### AF-3: Maximum OTP Verification Attempts Exceeded
+
+1. The customer exceeds the maximum permitted Email OTP verification attempts.
+2. The system invalidates the active OTP.
+3. The system temporarily blocks further verification attempts for the current OTP.
+4. The system instructs the customer to request a new Email OTP.
+5. The system records the security event in the audit log.
+
+---
+
+##### AF-4: OTP Resend Limit Exceeded
+
+1. The customer exceeds the maximum permitted OTP resend requests within the configured time window.
+2. The system rejects the resend request.
+3. The system informs the customer that the resend limit has been exceeded.
+4. The customer is requested to retry after the configured waiting period.
+5. The system records the resend limit violation for security monitoring.
+
+---
+
+##### AF-5: Email Already Verified
+
+1. The customer attempts to verify an Email Address that has already been successfully verified.
+2. The system identifies that the Email Verification Status is **VERIFIED**.
+3. The system skips the verification process.
+4. The system informs the customer that the Email Address has already been verified.
+
+---
+
+##### AF-6: Email Delivery Failure
+
+1. The system is unable to deliver the Email OTP due to an Email Service failure.
+2. The system records the delivery failure.
+3. The system informs the customer that the verification email could not be sent.
+4. The customer is requested to retry later or use the **Resend OTP** option once the service becomes available.
+
+---
+
+##### AF-7: Customer Account Not Found
+
+1. The submitted Email Address is not associated with any customer account.
+2. The system rejects the verification request.
+3. The system records the unsuccessful verification attempt.
+4. The system displays a generic verification failure message without exposing account information.
+
+---
+
+##### AF-8: Unexpected System Error
+
+1. An unexpected application or infrastructure error occurs during Email Verification.
+2. The system safely terminates the verification process.
+3. The system records detailed diagnostic information in the application logs.
+4. The customer receives a generic error message without exposing internal implementation details.
+
+#### 3.1.3.10 Postconditions
+
+##### Successful Email Verification
+
+Upon successful Email Verification, the system shall:
+
+1. Mark the customer's Email Verification Status as **VERIFIED**.
+2. Record the Email Verification Timestamp.
+3. Invalidate the verified Email OTP to prevent reuse.
+4. Record the successful Email Verification event in the audit log.
+5. Check whether the customer's Mobile Number has also been successfully verified.
+6. Update the Customer Account Status to **ACTIVE** if both Email Address and Mobile Number have been successfully verified.
+7. Allow the customer to proceed to the next step in the account activation process or login process based on the verification status.
+
+##### Failed Email Verification
+
+Upon unsuccessful Email Verification, the system shall:
+
+1. Reject the verification request.
+2. Increment the failed OTP verification attempt counter, where applicable.
+3. Record the failed verification event in the audit log.
+4. Invalidate the Email OTP if it has expired or if the maximum verification attempt limit has been exceeded.
+5. Return an appropriate verification failure response without exposing sensitive system information.
+
+#### 3.1.3.11 Success Response
+
+Upon successful Email Verification, the system shall:
+
+- Verify the customer's Email Address successfully.
+- Update the Email Verification Status to **VERIFIED**.
+- Record the Email Verification Timestamp.
+- Invalidate the verified Email OTP.
+- Record the successful verification event in the audit log.
+- Activate the customer account if all mandatory verification requirements have been completed.
+- Redirect the customer to the next step in the account activation process or the Login page.
+- Display a confirmation message indicating that the Email Address has been successfully verified.
+
+#### 3.1.3.12 Failure Response
+
+The system shall reject the Email Verification request under the following conditions:
+
+- Email OTP is missing.
+- Email OTP format is invalid.
+- Email OTP is incorrect.
+- Email OTP has expired.
+- Email OTP has already been used.
+- Maximum OTP verification attempts have been exceeded.
+- Maximum OTP resend requests have been exceeded.
+- Customer account does not exist.
+- Email Address has already been verified.
+- Customer account is not in **PENDING_VERIFICATION** status.
+- Email Service or OTP Verification Service is unavailable.
+- Internal server error.
+
+In all failure scenarios, the system shall return a generic verification failure response without revealing sensitive security information.
+
+#### 3.1.3.13 Non-Functional Considerations
+
+- All Email Verification requests and responses shall be transmitted over HTTPS.
+- The Email OTP shall be generated using a cryptographically secure random generation mechanism.
+- Email OTP values shall never be stored or transmitted in plain text.
+- The system shall complete **95% of successful Email Verification requests within 2 seconds**, excluding external email delivery time.
+- The Email Verification service shall support concurrent verification requests from multiple customers.
+- Every OTP generation, resend request, successful verification, and failed verification attempt shall be recorded for auditing and compliance purposes.
+- The system shall implement rate limiting to mitigate brute-force attacks against OTP verification.
+- Verification failure responses shall not expose internal validation logic or security-sensitive information.
+- The Email Verification process shall comply with the platform's security, privacy, and data protection policies.
+
+#### 3.1.3.14 Acceptance Criteria
+
+| ID | Acceptance Criteria |
+|----|---------------------|
+| **AC-EMAIL-001** | Given a registered customer with an unverified Email Address, when a valid Email OTP is submitted within its validity period, then the system shall verify the Email Address successfully. |
+| **AC-EMAIL-002** | Given an incorrect Email OTP, when verification is attempted, then the system shall reject the verification request. |
+| **AC-EMAIL-003** | Given an expired Email OTP, when verification is attempted, then the system shall reject the verification request and require the customer to request a new OTP. |
+| **AC-EMAIL-004** | Given five unsuccessful OTP verification attempts, when another verification attempt is made, then the system shall invalidate the active OTP and require a new OTP to continue. |
+| **AC-EMAIL-005** | Given a verified Email Address, when another verification attempt is made, then the system shall inform the customer that the Email Address has already been verified. |
+| **AC-EMAIL-006** | Given successful Email Verification and successful Mobile Number Verification, when all verification requirements are completed, then the system shall activate the customer account. |
+| **AC-EMAIL-007** | Every OTP generation, resend request, successful verification, and failed verification attempt shall be recorded in the audit log. |
+| **AC-EMAIL-008** | Verification failure responses shall not expose sensitive security information or internal implementation details.
+
+
 ### 3.1.4 Mobile Number Verification
 
 ### 3.1.5 Forgot Password
