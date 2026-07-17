@@ -330,3 +330,1087 @@ The software depends on the following external systems and services:
 Any changes to these assumptions or the availability of dependent services may affect the functionality, reliability, or performance of the software.
 
 ---
+
+# 3. Functional Requirements
+
+The Functional Requirements specify the software capabilities that the Food Delivery Platform shall provide to satisfy business objectives and user needs.
+
+Each functional requirement describes the expected behavior of the system, user interactions, business rules, validations, processing logic, and expected outcomes for a specific software feature.
+
+The functional requirements are organized into logical business modules to improve readability, maintainability, traceability, and future software development activities. Each module represents a major business capability of the Food Delivery Platform and serves as the foundation for system design, database design, API design, frontend development, backend development, testing, deployment, and future product enhancements.
+
+The functional modules included in this document are:
+
+- Customer Module
+- Restaurant Discovery Module
+- Menu Module
+- Shopping Cart Module
+- Checkout Module
+- Payment Module
+- Order Management Module
+- Delivery Management Module
+- Customer Support Module
+- Review and Rating Module
+- Notification Module
+- Restaurant Management Module
+- Delivery Partner Module
+- Administrator Module
+- Platform Services Module
+
+Each module is further divided into individual functional requirements that define the expected behavior of the software in detail.
+
+---
+
+## 3.1 Customer Module
+
+The Customer Module provides all functionalities required for customer account management, authentication, profile management, preferences, and account security. It enables customers to register, access the platform securely, manage personal information, maintain delivery addresses, and configure account settings throughout their lifecycle on the Food Delivery Platform.
+
+The functional requirements included in the Customer Module are:
+
+### 3.1.1 Customer Registration
+
+#### 3.1.1.1 Description
+
+The Customer Registration functionality enables a new customer to create a unique account on the Food Delivery Platform to access its services.
+
+To register, the customer shall provide the required personal information, including First Name, Last Name, Email Address, Mobile Number, Password, and Confirm Password. The customer shall also accept the Terms & Conditions and Privacy Policy before submitting the registration request. An optional Referral Code may be provided during registration.
+
+The system shall validate all input data, verify the uniqueness of the email address and mobile number, and securely store customer credentials using industry-standard password hashing techniques.
+
+Upon successful submission, the system shall initiate Email OTP Verification and Mobile OTP Verification. The customer account shall be activated only after both verification processes are successfully completed.
+
+Once the account is activated, the customer shall be able to authenticate into the platform and access features such as restaurant discovery, food ordering, order tracking, payment services, profile management, and other authorized platform functionalities.
+
+The registration process shall ensure data integrity, account uniqueness, security, and compliance with the platform's authentication and privacy requirements.
+
+#### 3.1.1.2 Actors
+
+**Primary Actor**
+
+- Customer
+
+**Supporting Actors**
+
+- Authentication Service
+- Email Service
+- SMS/OTP Service
+
+#### 3.1.1.3 Preconditions
+
+- The customer shall have access to the Food Delivery Platform through a supported web or mobile application.
+- The customer shall have a stable internet connection.
+- The customer shall possess a valid Email Address and Mobile Number capable of receiving One-Time Passwords (OTPs).
+- The Email Address and Mobile Number shall not already be associated with an existing customer account.
+- The Authentication Service, Email Service, and SMS/OTP Service shall be available.
+- The Customer Registration service shall be operational.
+
+#### 3.1.1.4 Trigger
+
+The registration process shall be initiated when a customer submits the completed registration form by selecting the **Create Account** action on the Food Delivery Platform.
+
+#### 3.1.1.5 Input Fields
+
+| Field Name | Data Type | Mandatory | Description |
+|------------|-----------|-----------|-------------|
+| First Name | String | Yes | Customer's first name. |
+| Last Name | String | Yes | Customer's last name. |
+| Email Address | String | Yes | Customer's email address used for account verification and communication. |
+| Mobile Number | String | Yes | Customer's mobile number used for OTP verification and delivery communication. |
+| Password | String | Yes | Customer-defined password for account authentication. |
+| Confirm Password | String | Yes | Re-entered password to confirm accuracy. |
+| Accept Terms & Conditions | Boolean | Yes | Indicates the customer's acceptance of the platform's Terms & Conditions. |
+| Accept Privacy Policy | Boolean | Yes | Indicates the customer's acceptance of the platform's Privacy Policy. |
+| Referral Code | String | No | Optional referral code provided during registration. |
+
+#### 3.1.1.6 Business Rules
+
+- Each customer account shall be associated with a unique Email Address.
+- Each customer account shall be associated with a unique Mobile Number.
+- The customer shall accept the Terms & Conditions before submitting the registration request.
+- The customer shall accept the Privacy Policy before submitting the registration request.
+- The system shall create the customer account with the default role **CUSTOMER**.
+- The customer account shall be created with the initial account status **PENDING_VERIFICATION**.
+- The customer shall complete both Email OTP Verification and Mobile OTP Verification before the account is activated.
+- The system shall activate the customer account only after successful completion of all mandatory verification processes.
+- The system shall securely store customer passwords using an industry-standard password hashing algorithm and shall never store passwords in plain text.
+- If the provided Email Address or Mobile Number already exists, the system shall reject the registration request.
+- If a Referral Code is provided, the system shall validate the referral code before applying referral benefits. An invalid referral code shall not prevent successful customer registration.
+- The system shall maintain separate verification statuses for Email Verification and Mobile Verification to support independent verification tracking.
+
+#### 3.1.1.7 Validations
+
+| Field | Validation Rules |
+|-------|------------------|
+| First Name | Mandatory. Shall contain only alphabetic characters, spaces, hyphens (-), and apostrophes ('). Minimum length: 2 characters. Maximum length: 50 characters. Leading and trailing spaces shall be trimmed. |
+| Last Name | Mandatory. Shall contain only alphabetic characters, spaces, hyphens (-), and apostrophes ('). Minimum length: 2 characters. Maximum length: 50 characters. Leading and trailing spaces shall be trimmed. |
+| Email Address | Mandatory. Shall conform to a valid email format (RFC-compliant). Maximum length: 254 characters. Email address comparison shall be case-insensitive for uniqueness. |
+| Mobile Number | Mandatory. Shall contain only numeric characters. Shall consist of exactly 10 digits for Indian mobile numbers. Country code, if supported, shall follow the E.164 international format. |
+| Password | Mandatory. Minimum length: 8 characters. Maximum length: 64 characters. Shall contain at least one uppercase letter, one lowercase letter, one numeric digit, and one special character. Shall not contain spaces. |
+| Confirm Password | Mandatory. Shall exactly match the Password field before registration is accepted. |
+| Accept Terms & Conditions | Mandatory. Registration shall not proceed unless accepted. |
+| Accept Privacy Policy | Mandatory. Registration shall not proceed unless accepted. |
+| Referral Code | Optional. If provided, the code shall exist, be active, and not be expired before referral benefits are applied. |
+| Duplicate Account Validation | The Email Address and Mobile Number shall be unique. Registration shall be rejected if either already exists. |
+| OTP Validation | Email OTP and Mobile OTP shall be validated independently. OTPs shall expire after the configured validity period and shall not be reusable after successful verification. |
+| Input Sanitization | All input fields shall be sanitized to prevent SQL Injection, Cross-Site Scripting (XSS), HTML Injection, and other malicious input attacks. |
+
+#### 3.1.1.8 Main Flow
+
+1. The customer navigates to the Customer Registration page.
+2. The system displays the registration form.
+3. The customer enters the required registration information.
+4. The customer accepts the Terms & Conditions and Privacy Policy.
+5. The customer optionally enters a valid Referral Code.
+6. The customer submits the registration form by selecting the **Create Account** action.
+7. The system validates all input fields.
+8. The system verifies that the Email Address and Mobile Number are unique.
+9. The system securely hashes the customer's password.
+10. The system creates the customer account with the status **PENDING_VERIFICATION**.
+11. The system generates and sends an Email OTP to the registered Email Address.
+12. The system generates and sends a Mobile OTP to the registered Mobile Number.
+13. The customer successfully verifies the Email OTP.
+14. The customer successfully verifies the Mobile OTP.
+15. The system updates the Email Verification Status to **VERIFIED**.
+16. The system updates the Mobile Verification Status to **VERIFIED**.
+17. The system changes the Customer Account Status from **PENDING_VERIFICATION** to **ACTIVE**.
+18. The system assigns the default role **CUSTOMER** to the account.
+19. The system records the registration activity in the audit log.
+20. The system displays a successful registration confirmation message.
+21. The customer is redirected to the Login page or automatically authenticated based on the platform configuration.
+
+---
+
+#### 3.1.1.9 Alternate Flows
+
+##### AF-1: Duplicate Email Address
+
+1. The customer submits the registration form.
+2. The system detects that the Email Address is already associated with an existing customer account.
+3. The system rejects the registration request.
+4. The system displays an appropriate error message.
+5. The customer may provide a different Email Address and resubmit the registration form.
+
+##### AF-2: Duplicate Mobile Number
+
+1. The customer submits the registration form.
+2. The system detects that the Mobile Number is already associated with an existing customer account.
+3. The system rejects the registration request.
+4. The system displays an appropriate error message.
+5. The customer may provide a different Mobile Number and resubmit the registration form.
+
+##### AF-3: Invalid Input Data
+
+1. The customer submits the registration form with invalid or incomplete information.
+2. The system validates the submitted data.
+3. The system highlights the invalid fields.
+4. The system displays appropriate validation messages.
+5. The customer corrects the information and resubmits the registration form.
+
+##### AF-4: Invalid or Expired OTP
+
+1. The customer enters an invalid or expired Email OTP or Mobile OTP.
+2. The system rejects the verification request.
+3. The system displays an appropriate error message.
+4. The customer may request a new OTP.
+5. The customer completes the verification using a valid OTP.
+
+##### AF-5: Email or SMS Service Unavailable
+
+1. The system is unable to deliver the Email OTP or Mobile OTP.
+2. The system records the delivery failure.
+3. The system informs the customer that OTP delivery has failed.
+4. The customer may retry the operation after the service becomes available.
+
+##### AF-6: Referral Code Validation Failure
+
+1. The customer provides an invalid or expired Referral Code.
+2. The system rejects the referral benefit.
+3. The system continues the registration process without applying referral rewards.
+4. The customer registration remains unaffected.
+
+---
+
+#### 3.1.1.10 Postconditions
+
+- A unique customer account shall be created in the system.
+- The customer account shall be assigned the default role **CUSTOMER**.
+- The customer account status shall be updated to **ACTIVE** after successful Email OTP Verification and Mobile OTP Verification.
+- The Email Verification Status shall be updated to **VERIFIED**.
+- The Mobile Verification Status shall be updated to **VERIFIED**.
+- The customer's password shall be securely stored using an industry-standard password hashing algorithm.
+- The customer profile shall be initialized with the default system configuration.
+- The registration activity shall be recorded in the system audit log.
+- The customer shall be eligible to authenticate and access authorized platform services.
+
+#### 3.1.1.11 Success Response
+
+Upon successful completion of the registration process and verification requirements:
+
+- The system shall activate the customer account.
+- The system shall display a confirmation message indicating that the registration has been completed successfully.
+- The customer shall be redirected to the Login page.
+- The customer shall be eligible to authenticate using the registered credentials.
+
+#### 3.1.1.12 Failure Response
+
+The registration request shall be rejected if any of the following conditions occur:
+
+- Mandatory information is missing.
+- One or more input fields fail validation.
+- The Email Address is already registered.
+- The Mobile Number is already registered.
+- The Password and Confirm Password do not match.
+- The customer does not accept the Terms & Conditions.
+- The customer does not accept the Privacy Policy.
+- Email OTP Verification fails.
+- Mobile OTP Verification fails.
+- The registration request cannot be processed due to an internal system error.
+
+The system shall display an appropriate error message indicating the reason for the failure and allow the customer to correct the information or retry the operation where applicable.
+
+#### 3.1.1.13 Non-Functional Considerations
+
+- The registration process shall use HTTPS for all client-server communication.
+- Customer passwords shall be stored only in hashed form using an industry-standard password hashing algorithm.
+- Sensitive information shall never be logged in plain text.
+- Personally Identifiable Information (PII) shall be protected in accordance with applicable data protection regulations.
+- The registration service shall be designed to support concurrent registration requests.
+- The system shall implement appropriate security controls to protect against common web vulnerabilities, including SQL Injection, Cross-Site Scripting (XSS), and Cross-Site Request Forgery (CSRF).
+- All registration activities shall be auditable.
+- The registration process should provide a responsive user experience under normal operating conditions.
+
+#### 3.1.1.14 Acceptance Criteria
+
+- A customer can successfully register using valid information.
+- Duplicate Email Addresses shall not be permitted.
+- Duplicate Mobile Numbers shall not be permitted.
+- Registration shall not succeed unless the Terms & Conditions and Privacy Policy are accepted.
+- The customer account shall remain in **PENDING_VERIFICATION** status until Email OTP Verification and Mobile OTP Verification are completed.
+- The customer account shall be activated only after successful completion of all mandatory verification steps.
+- Passwords shall be stored securely and never in plain text.
+- All mandatory validations shall be enforced before account creation.
+- The registration process shall complete successfully without data inconsistency.
+
+### 3.1.2 Customer Login
+
+### 3.1.3 Email Verification
+
+### 3.1.4 Mobile Number Verification
+
+### 3.1.5 Forgot Password
+
+### 3.1.6 Reset Password
+
+### 3.1.7 Logout
+
+### 3.1.8 Refresh Access Token
+
+### 3.1.9 Customer Profile View
+
+### 3.1.10 Customer Profile Update
+
+### 3.1.11 Profile Picture Management
+
+### 3.1.12 Change Password
+
+### 3.1.13 Account Deactivation
+
+### 3.1.14 Account Reactivation
+
+### 3.1.15 Account Deletion
+
+### 3.1.16 Address Management
+
+### 3.1.17 Default Address Management
+
+### 3.1.18 Saved Places
+
+### 3.1.19 Contact Preferences
+
+### 3.1.20 Language Preferences
+
+### 3.1.21 Notification Preferences
+
+### 3.1.22 Customer Wallet
+
+### 3.1.23 Loyalty Points
+
+### 3.1.24 Referral Program
+
+### 3.1.25 Saved Payment Methods
+
+### 3.1.26 Device Management
+
+### 3.1.27 Login Activity History
+
+### 3.1.28 Privacy Settings
+
+### 3.1.29 Communication Preferences
+
+### 3.1.30 Customer Dashboard
+
+### 3.1.31 Delete Saved Device
+
+### 3.1.32 Two-Factor Authentication (2FA)
+
+### 3.1.33 Social Login
+
+### 3.1.34 Session Management
+
+### 3.1.35 Customer Account Recovery
+
+---
+
+## 3.2 Restaurant Discovery Module
+
+The Restaurant Discovery Module enables customers to search, browse, filter, and discover restaurants based on various criteria such as location, cuisine, ratings, offers, availability, and delivery preferences. It helps customers identify suitable restaurants and make informed ordering decisions.
+
+The functional requirements included in the Restaurant Discovery Module are:
+
+### 3.2.1 Search Restaurants
+
+### 3.2.2 Browse Restaurants
+
+### 3.2.3 Filter Restaurants
+
+### 3.2.4 Sort Restaurants
+
+### 3.2.5 View Restaurant Details
+
+### 3.2.6 View Restaurant Ratings
+
+### 3.2.7 View Restaurant Reviews
+
+### 3.2.8 View Restaurant Menu Categories
+
+### 3.2.9 View Restaurant Operating Hours
+
+### 3.2.10 View Delivery Time
+
+### 3.2.11 View Delivery Charges
+
+### 3.2.12 View Restaurant Location
+
+### 3.2.13 View Restaurant Images
+
+### 3.2.14 View Popular Restaurants
+
+### 3.2.15 View Recommended Restaurants
+
+### 3.2.16 View Nearby Restaurants
+
+### 3.2.17 View Newly Added Restaurants
+
+### 3.2.18 View Featured Restaurants
+
+### 3.2.19 View Offers and Discounts
+
+### 3.2.20 Mark Restaurant as Favorite
+
+### 3.2.21 Remove Restaurant from Favorites
+
+### 3.2.22 View Favorite Restaurants
+
+### 3.2.23 View Restaurant Availability
+
+### 3.2.24 View Closed Restaurants
+
+### 3.2.25 Restaurant Search History
+
+---
+
+## 3.3 Menu Module
+
+The Menu Module enables customers to explore restaurant menus, view food categories, access detailed item information, customize menu items, and make informed purchasing decisions before adding items to the shopping cart.
+
+The functional requirements included in the Menu Module are:
+
+### 3.3.1 View Menu
+
+### 3.3.2 View Food Categories
+
+### 3.3.3 View Food Item Details
+
+### 3.3.4 Search Menu Items
+
+### 3.3.5 Filter Menu Items
+
+### 3.3.6 Sort Menu Items
+
+### 3.3.7 View Item Images
+
+### 3.3.8 View Item Description
+
+### 3.3.9 View Ingredients
+
+### 3.3.10 View Nutritional Information
+
+### 3.3.11 View Allergen Information
+
+### 3.3.12 View Food Price
+
+### 3.3.13 View Available Customizations
+
+### 3.3.14 Customize Food Item
+
+### 3.3.15 Select Item Variants
+
+### 3.3.16 Add Extra Toppings
+
+### 3.3.17 Remove Ingredients
+
+### 3.3.18 Mark Item as Favorite
+
+### 3.3.19 Remove Item from Favorites
+
+### 3.3.20 View Favorite Items
+
+### 3.3.21 View Recommended Items
+
+### 3.3.22 View Popular Items
+
+### 3.3.23 View Combo Meals
+
+### 3.3.24 View Item Availability
+
+### 3.3.25 Share Menu Item
+
+---
+
+## 3.4 Shopping Cart Module
+
+The Shopping Cart Module enables customers to add menu items, modify cart contents, review selected items, apply discounts, and calculate the total payable amount before proceeding to checkout.
+
+The functional requirements included in the Shopping Cart Module are:
+
+### 3.4.1 Add Item to Cart
+
+### 3.4.2 View Shopping Cart
+
+### 3.4.3 Update Item Quantity
+
+### 3.4.4 Remove Item from Cart
+
+### 3.4.5 Clear Shopping Cart
+
+### 3.4.6 Save Cart for Later
+
+### 3.4.7 Restore Saved Cart
+
+### 3.4.8 Apply Coupon
+
+### 3.4.9 Remove Coupon
+
+### 3.4.10 Apply Promotional Offer
+
+### 3.4.11 View Cart Summary
+
+### 3.4.12 Calculate Item Total
+
+### 3.4.13 Calculate Taxes
+
+### 3.4.14 Calculate Delivery Charges
+
+### 3.4.15 Calculate Packaging Charges
+
+### 3.4.16 Calculate Platform Fee
+
+### 3.4.17 Calculate Discount Amount
+
+### 3.4.18 Calculate Grand Total
+
+### 3.4.19 Validate Cart Items
+
+### 3.4.20 Check Item Availability
+
+### 3.4.21 Check Minimum Order Value
+
+### 3.4.22 Display Estimated Delivery Time
+
+### 3.4.23 Handle Out-of-Stock Items
+
+### 3.4.24 Merge Guest Cart with Customer Cart
+
+### 3.4.25 Persist Shopping Cart
+
+---
+
+## 3.5 Checkout Module
+
+The Checkout Module enables customers to review their order, select a delivery address, choose a payment method, verify order details, and confirm the purchase before the order is placed.
+
+The functional requirements included in the Checkout Module are:
+
+### 3.5.1 Proceed to Checkout
+
+### 3.5.2 Review Order Summary
+
+### 3.5.3 Select Delivery Address
+
+### 3.5.4 Add New Delivery Address
+
+### 3.5.5 Edit Delivery Address
+
+### 3.5.6 Delete Delivery Address
+
+### 3.5.7 Select Delivery Type
+
+### 3.5.8 Schedule Delivery
+
+### 3.5.9 Select Payment Method
+
+### 3.5.10 Apply Coupon at Checkout
+
+### 3.5.11 Apply Wallet Balance
+
+### 3.5.12 Add Delivery Instructions
+
+### 3.5.13 Validate Checkout Information
+
+### 3.5.14 Calculate Final Payable Amount
+
+### 3.5.15 Display Estimated Delivery Time
+
+### 3.5.16 Accept Terms and Conditions
+
+### 3.5.17 Confirm Order
+
+### 3.5.18 Cancel Checkout
+
+### 3.5.19 Redirect to Payment
+
+### 3.5.20 Handle Checkout Failure
+
+### 3.5.21 Save Checkout Session
+
+### 3.5.22 Resume Interrupted Checkout
+
+### 3.5.23 Validate Restaurant Availability
+
+### 3.5.24 Validate Delivery Service Availability
+
+### 3.5.25 Generate Order Request
+
+---
+
+## 3.6 Payment Module
+
+The Payment Module enables customers to securely complete payments using supported payment methods, process transactions, handle payment failures, initiate refunds, and maintain payment history.
+
+The functional requirements included in the Payment Module are:
+
+### 3.6.1 Initiate Payment
+
+### 3.6.2 Select Payment Method
+
+### 3.6.3 Process Online Payment
+
+### 3.6.4 Process Cash on Delivery (COD)
+
+### 3.6.5 Validate Payment Request
+
+### 3.6.6 Authorize Payment
+
+### 3.6.7 Capture Payment
+
+### 3.6.8 Handle Payment Success
+
+### 3.6.9 Handle Payment Failure
+
+### 3.6.10 Retry Failed Payment
+
+### 3.6.11 Cancel Payment
+
+### 3.6.12 Verify Payment Status
+
+### 3.6.13 Generate Payment Receipt
+
+### 3.6.14 Send Payment Confirmation
+
+### 3.6.15 Save Payment Method
+
+### 3.6.16 Remove Saved Payment Method
+
+### 3.6.17 View Payment History
+
+### 3.6.18 Initiate Refund
+
+### 3.6.19 Process Refund
+
+### 3.6.20 Verify Refund Status
+
+### 3.6.21 Handle Partial Refund
+
+### 3.6.22 Handle Payment Gateway Timeout
+
+### 3.6.23 Record Payment Transaction
+
+### 3.6.24 Prevent Duplicate Payments
+
+### 3.6.25 Generate Payment Audit Log
+
+---
+
+## 3.7 Order Management Module
+
+The Order Management Module enables customers to place orders, monitor order progress, manage order history, cancel eligible orders, and track the complete order lifecycle from confirmation to delivery.
+
+The functional requirements included in the Order Management Module are:
+
+### 3.7.1 Place Order
+
+### 3.7.2 Generate Order ID
+
+### 3.7.3 Confirm Order
+
+### 3.7.4 Assign Restaurant
+
+### 3.7.5 Accept Order by Restaurant
+
+### 3.7.6 Reject Order by Restaurant
+
+### 3.7.7 Update Order Status
+
+### 3.7.8 View Order Details
+
+### 3.7.9 Track Order
+
+### 3.7.10 View Order Timeline
+
+### 3.7.11 Modify Order Before Preparation
+
+### 3.7.12 Cancel Order
+
+### 3.7.13 Validate Cancellation Eligibility
+
+### 3.7.14 Calculate Cancellation Charges
+
+### 3.7.15 Reorder Previous Order
+
+### 3.7.16 View Order History
+
+### 3.7.17 Download Invoice
+
+### 3.7.18 Raise Order Issue
+
+### 3.7.19 Report Missing Item
+
+### 3.7.20 Report Wrong Item
+
+### 3.7.21 Report Damaged Item
+
+### 3.7.22 Request Refund for Order
+
+### 3.7.23 Notify Order Status Changes
+
+### 3.7.24 Archive Completed Orders
+
+### 3.7.25 Generate Order Audit Log
+
+---
+
+## 3.8 Delivery Management Module
+
+The Delivery Management Module enables efficient assignment, tracking, and completion of food deliveries. It supports real-time delivery tracking, delivery partner coordination, delivery status updates, and successful order fulfillment.
+
+The functional requirements included in the Delivery Management Module are:
+
+### 3.8.1 Assign Delivery Partner
+
+### 3.8.2 Accept Delivery Assignment
+
+### 3.8.3 Reject Delivery Assignment
+
+### 3.8.4 Reassign Delivery Partner
+
+### 3.8.5 Pick Up Order
+
+### 3.8.6 Verify Order Pickup
+
+### 3.8.7 Start Delivery
+
+### 3.8.8 Share Live Delivery Location
+
+### 3.8.9 Track Delivery
+
+### 3.8.10 Update Delivery Status
+
+### 3.8.11 Contact Customer
+
+### 3.8.12 Contact Restaurant
+
+### 3.8.13 Handle Delivery Delay
+
+### 3.8.14 Handle Delivery Failure
+
+### 3.8.15 Verify Customer Identity
+
+### 3.8.16 Deliver Order
+
+### 3.8.17 Confirm Delivery Completion
+
+### 3.8.18 Collect Cash on Delivery
+
+### 3.8.19 Report Delivery Issue
+
+### 3.8.20 Report Delivery Partner Issue
+
+### 3.8.21 Calculate Delivery Earnings
+
+### 3.8.22 Record Delivery Timeline
+
+### 3.8.23 Send Delivery Notifications
+
+### 3.8.24 Generate Delivery Proof
+
+### 3.8.25 Generate Delivery Audit Log
+
+---
+
+## 3.9 Customer Support Module
+
+The Customer Support Module enables customers to seek assistance, report issues, raise complaints, request refunds, and communicate with the support team to ensure a satisfactory customer experience.
+
+The functional requirements included in the Customer Support Module are:
+
+### 3.9.1 Raise Support Ticket
+
+### 3.9.2 View Support Tickets
+
+### 3.9.3 Update Support Ticket
+
+### 3.9.4 Close Support Ticket
+
+### 3.9.5 Chat with Customer Support
+
+### 3.9.6 Contact Customer Care
+
+### 3.9.7 Report Order Issue
+
+### 3.9.8 Report Delivery Issue
+
+### 3.9.9 Report Payment Issue
+
+### 3.9.10 Report Restaurant Issue
+
+### 3.9.11 Upload Supporting Evidence
+
+### 3.9.12 Request Refund
+
+### 3.9.13 Track Refund Status
+
+### 3.9.14 Request Compensation
+
+### 3.9.15 Escalate Support Ticket
+
+### 3.9.16 View Frequently Asked Questions (FAQ)
+
+### 3.9.17 Search Help Articles
+
+### 3.9.18 Receive Support Notifications
+
+### 3.9.19 Rate Customer Support
+
+### 3.9.20 Submit Customer Feedback
+
+### 3.9.21 View Complaint History
+
+### 3.9.22 Reopen Closed Ticket
+
+### 3.9.23 Assign Support Agent
+
+### 3.9.24 Track Ticket Resolution
+
+### 3.9.25 Generate Support Audit Log
+
+---
+
+## 3.10 Review and Rating Module
+
+The Review and Rating Module enables customers to provide feedback on restaurants, food items, and delivery experiences. It helps maintain service quality, improve customer trust, and assist future customers in making informed decisions.
+
+The functional requirements included in the Review and Rating Module are:
+
+### 3.10.1 Submit Restaurant Rating
+
+### 3.10.2 Submit Restaurant Review
+
+### 3.10.3 Submit Food Item Rating
+
+### 3.10.4 Submit Food Item Review
+
+### 3.10.5 Submit Delivery Partner Rating
+
+### 3.10.6 Submit Delivery Partner Review
+
+### 3.10.7 Edit Review
+
+### 3.10.8 Delete Review
+
+### 3.10.9 View Restaurant Reviews
+
+### 3.10.10 View Restaurant Ratings
+
+### 3.10.11 View Food Item Reviews
+
+### 3.10.12 View Food Item Ratings
+
+### 3.10.13 View Delivery Partner Ratings
+
+### 3.10.14 Like Review
+
+### 3.10.15 Report Inappropriate Review
+
+### 3.10.16 Verify Review Eligibility
+
+### 3.10.17 Moderate Reviews
+
+### 3.10.18 Calculate Average Ratings
+
+### 3.10.19 Display Review Summary
+
+### 3.10.20 Sort Reviews
+
+### 3.10.21 Filter Reviews
+
+### 3.10.22 Upload Review Images
+
+### 3.10.23 View Customer Review History
+
+### 3.10.24 Notify Review Submission
+
+### 3.10.25 Generate Review Audit Log
+
+---
+
+## 3.11 Notification Module
+
+The Notification Module enables the Food Delivery Platform to deliver timely and relevant notifications to customers, restaurants, delivery partners, and administrators. It supports real-time updates related to orders, payments, promotions, account activities, and system events through multiple communication channels.
+
+The functional requirements included in the Notification Module are:
+
+### 3.11.1 Send Order Confirmation Notification
+
+### 3.11.2 Send Order Status Update Notification
+
+### 3.11.3 Send Delivery Status Notification
+
+### 3.11.4 Send Payment Confirmation Notification
+
+### 3.11.5 Send Refund Notification
+
+### 3.11.6 Send Promotional Notification
+
+### 3.11.7 Send Offer and Discount Notification
+
+### 3.11.8 Send Restaurant Notification
+
+### 3.11.9 Send Delivery Partner Notification
+
+### 3.11.10 Send Support Ticket Notification
+
+### 3.11.11 Send Account Security Notification
+
+### 3.11.12 Send Password Reset Notification
+
+### 3.11.13 Send Email Notification
+
+### 3.11.14 Send SMS Notification
+
+### 3.11.15 Send Push Notification
+
+### 3.11.16 Manage Notification Preferences
+
+### 3.11.17 Mark Notification as Read
+
+### 3.11.18 Delete Notification
+
+### 3.11.19 View Notification History
+
+### 3.11.20 Schedule Notifications
+
+### 3.11.21 Retry Failed Notifications
+
+### 3.11.22 Broadcast System Announcement
+
+### 3.11.23 Track Notification Delivery Status
+
+### 3.11.24 Generate Notification Audit Log
+
+### 3.11.25 Archive Notifications
+
+---
+
+## 3.13 Delivery Partner Module
+
+The Delivery Partner Module enables delivery personnel to manage deliveries efficiently by accepting delivery assignments, navigating to pickup and delivery locations, updating delivery status, tracking earnings, and maintaining their delivery profile.
+
+The functional requirements included in the Delivery Partner Module are:
+
+### 3.13.1 Delivery Partner Registration
+
+### 3.13.2 Delivery Partner Verification
+
+### 3.13.3 Delivery Partner Login
+
+### 3.13.4 Manage Delivery Partner Profile
+
+### 3.13.5 Manage Vehicle Information
+
+### 3.13.6 Manage Availability Status
+
+### 3.13.7 View Delivery Requests
+
+### 3.13.8 Accept Delivery Request
+
+### 3.13.9 Reject Delivery Request
+
+### 3.13.10 View Pickup Details
+
+### 3.13.11 Navigate to Restaurant
+
+### 3.13.12 Confirm Order Pickup
+
+### 3.13.13 Navigate to Customer
+
+### 3.13.14 Share Live Location
+
+### 3.13.15 Update Delivery Status
+
+### 3.13.16 Confirm Order Delivery
+
+### 3.13.17 Collect Cash on Delivery
+
+### 3.13.18 Report Delivery Issue
+
+### 3.13.19 View Delivery History
+
+### 3.13.20 View Earnings Summary
+
+### 3.13.21 View Incentives
+
+### 3.13.22 View Performance Metrics
+
+### 3.13.23 Receive Delivery Notifications
+
+### 3.13.24 Request Support
+
+### 3.13.25 Generate Delivery Partner Audit Log
+
+---
+
+## 3.14 Administrator Module
+
+The Administrator Module enables system administrators to manage the overall Food Delivery Platform, including users, restaurants, delivery partners, orders, payments, reports, and platform configurations. It provides centralized control to ensure secure, reliable, and efficient platform operations.
+
+The functional requirements included in the Administrator Module are:
+
+### 3.14.1 Administrator Login
+
+### 3.14.2 Manage Administrator Profile
+
+### 3.14.3 Manage Customers
+
+### 3.14.4 Manage Restaurants
+
+### 3.14.5 Verify Restaurants
+
+### 3.14.6 Manage Delivery Partners
+
+### 3.14.7 Verify Delivery Partners
+
+### 3.14.8 Manage Orders
+
+### 3.14.9 Monitor Live Orders
+
+### 3.14.10 Manage Payments
+
+### 3.14.11 Process Refund Requests
+
+### 3.14.12 Manage Coupons
+
+### 3.14.13 Manage Promotional Campaigns
+
+### 3.14.14 Manage Customer Support Tickets
+
+### 3.14.15 Moderate Reviews and Ratings
+
+### 3.14.16 Manage Notifications
+
+### 3.14.17 View Platform Analytics
+
+### 3.14.18 Generate Business Reports
+
+### 3.14.19 Configure Platform Settings
+
+### 3.14.20 Manage Roles and Permissions
+
+### 3.14.21 View System Audit Logs
+
+### 3.14.22 Monitor System Health
+
+### 3.14.23 Handle Fraud Detection
+
+### 3.14.24 Suspend or Reactivate Accounts
+
+### 3.14.25 Generate Administrative Audit Log
+
+---
+
+## 3.15 Platform Services Module
+
+The Platform Services Module provides common system-level functionalities shared across multiple business modules. These services ensure platform security, reliability, performance, observability, data integrity, compliance, and seamless integration with external systems.
+
+The functional requirements included in the Platform Services Module are:
+
+### 3.15.1 Authentication Service
+
+### 3.15.2 Authorization Service
+
+### 3.15.3 User Session Management
+
+### 3.15.4 API Gateway Management
+
+### 3.15.5 Configuration Management
+
+### 3.15.6 Cache Management
+
+### 3.15.7 File Storage Management
+
+### 3.15.8 Search Service
+
+### 3.15.9 Audit Logging
+
+### 3.15.10 Activity Logging
+
+### 3.15.11 Error Logging
+
+### 3.15.12 Monitoring and Health Checks
+
+### 3.15.13 Backup Management
+
+### 3.15.14 Data Recovery
+
+### 3.15.15 Scheduler Management
+
+### 3.15.16 Third-Party Service Integration
+
+### 3.15.17 Payment Gateway Integration
+
+### 3.15.18 Notification Service Integration
+
+### 3.15.19 Location Service Integration
+
+### 3.15.20 Security Management
+
+### 3.15.21 Rate Limiting
+
+### 3.15.22 Exception Handling
+
+### 3.15.23 System Configuration
+
+### 3.15.24 Platform Analytics
+
+### 3.15.25 Generate System Audit Reports
+
+---
