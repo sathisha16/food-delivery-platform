@@ -1260,6 +1260,405 @@ In all failure scenarios, the system shall return a generic verification failure
 
 ### 3.1.4 Mobile Number Verification
 
+#### 3.1.4.1 Description
+
+The **Mobile Number Verification** functionality enables the Food Delivery Platform to verify the ownership and validity of the customer's registered Mobile Number during the account registration process. The system shall send a One-Time Password (OTP) to the customer's registered Mobile Number via SMS and allow the customer to verify the mobile number before activating the account.
+
+The platform shall permit account activation only after successful mobile number verification. Upon successful verification, the system shall update the customer's Mobile Verification Status, record the verification activity for auditing purposes, and allow the customer to proceed with the remaining account activation process.
+
+The Mobile Number Verification functionality shall ensure that only customers with verified Mobile Numbers can access protected platform features, thereby improving account security, enabling reliable SMS communication, and reducing fraudulent account creation.
+
+#### 3.1.4.2 Actors
+
+##### Primary Actor
+
+- Customer
+
+##### Supporting Actors
+
+- Authentication Service
+- SMS Gateway Service
+- OTP Verification Service
+- Audit Logging Service
+
+#### 3.1.4.3 Preconditions
+
+The following conditions shall be satisfied before Mobile Number Verification can be performed:
+
+1. The customer shall have successfully completed the registration process.
+2. The customer account shall exist in the system.
+3. The customer's Mobile Number shall not already be verified.
+4. The customer account shall be in **PENDING_VERIFICATION** status.
+5. The SMS Gateway Service shall be operational.
+6. The OTP Verification Service shall be available.
+7. The platform shall be accessible over a secure HTTPS connection.
+8. The customer shall have access to the registered Mobile Number.
+
+#### 3.1.4.4 Trigger
+
+The Mobile Number Verification process is initiated immediately after successful customer registration or when the customer explicitly requests to resend the Mobile OTP.
+
+#### 3.1.4.5 Input Fields
+
+| Field Name | Data Type | Mandatory | Description | Validation |
+|------------|-----------|-----------|-------------|------------|
+| Mobile Number | String | Yes | Registered Mobile Number associated with the customer account. | Shall be a valid registered Mobile Number in the supported format. |
+| Mobile OTP | Numeric | Yes | One-Time Password (OTP) sent to the customer's registered Mobile Number via SMS for verification. | Shall contain exactly six (6) numeric digits and match the latest active OTP issued by the system. |
+| Country Code | String | No | Country dialing code associated with the Mobile Number. | Shall comply with the platform's supported country code format (e.g., +91). |
+| Resend OTP | Action | No | Allows the customer to request a new Mobile OTP when the previous OTP has expired or has not been received. | Subject to OTP resend policy and rate limiting. |
+
+**Notes:**
+
+- The Mobile Number displayed on the verification screen shall be the Mobile Number provided during customer registration.
+- The Mobile Number shall not be editable during the verification process.
+- The Mobile OTP shall contain exactly six (6) numeric digits.
+- The system shall maintain only one active Mobile OTP for a customer account at any given time.
+- Requesting a new Mobile OTP shall invalidate any previously generated unexpired Mobile OTP.
+- SMS delivery is dependent on the availability of the configured SMS Gateway Service.
+
+#### 3.1.4.6 Business Rules
+
+1. The system shall generate a unique six (6)-digit numeric One-Time Password (OTP) for every Mobile Number Verification request.
+
+2. The generated Mobile OTP shall be valid for **10 minutes** from the time of generation.
+
+3. The system shall allow only one active Mobile OTP for a customer account at any given time.
+
+4. The system shall invalidate all previously generated unexpired Mobile OTPs whenever a new Mobile OTP is issued.
+
+5. The system shall deliver the Mobile OTP only to the customer's registered Mobile Number through the configured SMS Gateway Service.
+
+6. The system shall allow the customer to request a new Mobile OTP using the **Resend OTP** functionality.
+
+7. The system shall permit a maximum of **three (3) OTP resend requests within one hour**. Any additional resend requests within the same period shall be rejected.
+
+8. The system shall allow a maximum of **five (5) Mobile OTP verification attempts** for a single OTP. After the maximum attempts are exceeded, the OTP shall be invalidated automatically.
+
+9. The system shall verify the submitted OTP only if it matches the latest active Mobile OTP issued for the customer account.
+
+10. The system shall reject expired, invalid, previously used, or revoked Mobile OTPs.
+
+11. The system shall update the Mobile Verification Status to **VERIFIED** immediately after successful OTP verification.
+
+12. The system shall record the Mobile Verification Timestamp upon successful verification.
+
+13. The system shall prevent repeated Mobile Number Verification for a Mobile Number that has already been successfully verified.
+
+14. The system shall activate the customer account only after both the Email Address and Mobile Number have been successfully verified.
+
+15. The system shall record every Mobile OTP generation, resend request, successful verification, failed verification attempt, and SMS delivery status in the audit log.
+
+16. The system shall enforce HTTPS for all Mobile Number Verification requests and responses.
+
+17. The system shall ensure that Mobile OTP values are securely generated, stored, transmitted, and validated in accordance with the platform's security standards.
+
+18. The system shall not permit customer authentication or account activation solely based on successful Mobile Number Verification until all mandatory account activation requirements have been satisfied.
+
+19. The system shall display generic verification failure messages without exposing internal validation logic or security-sensitive information.
+
+20. The system shall record SMS delivery failures and allow the customer to request a new Mobile OTP in accordance with the configured resend policy.
+
+#### 3.1.4.7 Validations
+
+| Validation Category | Validation Rule |
+|---------------------|-----------------|
+| Mobile Number | The Mobile Number shall be associated with an existing customer account. |
+| Mobile Verification Status | Mobile Number Verification shall be permitted only if the Mobile Number has not already been verified. |
+| Mobile OTP Required | The Mobile OTP field shall be mandatory for every verification request. |
+| Mobile OTP Format | The Mobile OTP shall contain exactly six (6) numeric digits. |
+| Country Code | When provided, the Country Code shall conform to the platform's supported international dialing code format. |
+| Mobile Number Format | The Mobile Number shall comply with the supported numbering format and validation rules configured by the platform. |
+| OTP Expiry | The Mobile OTP shall be accepted only if it is within the configured validity period of **10 minutes**. |
+| OTP Match | The submitted Mobile OTP shall exactly match the latest active Mobile OTP generated for the customer account. |
+| OTP Reuse | A previously used or invalidated Mobile OTP shall not be accepted for verification. |
+| OTP Attempts | A maximum of **five (5)** Mobile OTP verification attempts shall be permitted for a single OTP. |
+| OTP Resend | The customer shall not exceed **three (3)** Mobile OTP resend requests within one hour. |
+| Account Status | Mobile Number Verification shall be permitted only for customer accounts in **PENDING_VERIFICATION** status. |
+| SMS Delivery Status | OTP verification shall be allowed only after successful OTP generation and SMS delivery confirmation by the SMS Gateway Service, where delivery status is available. |
+| Secure Communication | All Mobile Number Verification requests shall be processed only over HTTPS. |
+| Input Sanitization | All user inputs shall be sanitized to prevent SQL Injection, Cross-Site Scripting (XSS), HTML Injection, Command Injection, and other malicious input attacks. |
+| Audit Validation | Every Mobile OTP generation, resend request, successful verification, failed verification attempt, and SMS delivery event shall be recorded in the audit log. |
+| Error Messages | Verification failure responses shall not disclose internal validation details, security-sensitive information, or whether a Mobile Number exists in the platform. |
+
+#### 3.1.4.8 Main Flow
+
+1. The customer completes the registration process.
+
+2. The system generates a unique six (6)-digit Mobile OTP.
+
+3. The system securely stores the generated Mobile OTP along with its expiration time.
+
+4. The system sends the Mobile OTP to the customer's registered Mobile Number through the configured SMS Gateway Service.
+
+5. The system receives the SMS delivery status from the SMS Gateway Service, where supported.
+
+6. The system displays the Mobile Number Verification page.
+
+7. The customer enters the received Mobile OTP.
+
+8. The customer clicks the **Verify** button.
+
+9. The system validates all mandatory input fields.
+
+10. The system validates the format of the submitted Mobile OTP.
+
+11. The system verifies that the customer account exists.
+
+12. The system verifies that the Mobile Number has not already been verified.
+
+13. The system verifies that the customer account is in **PENDING_VERIFICATION** status.
+
+14. The system verifies that the submitted Mobile OTP has not expired.
+
+15. The system verifies that the submitted Mobile OTP matches the latest active OTP issued for the customer account.
+
+16. The system verifies that the maximum OTP verification attempt limit has not been exceeded.
+
+17. Upon successful verification, the system updates the Mobile Verification Status to **VERIFIED**.
+
+18. The system records the Mobile Verification Timestamp.
+
+19. The system invalidates the verified Mobile OTP to prevent reuse.
+
+20. The system records the successful Mobile Number Verification event in the audit log.
+
+21. The system verifies whether the customer's Email Address has also been successfully verified.
+
+22. If both the Email Address and Mobile Number are verified, the system updates the Customer Account Status to **ACTIVE**.
+
+23. The system notifies the customer that Mobile Number Verification has been completed successfully.
+
+24. The system redirects the customer to the next step in the account activation process or the Login page, based on the account verification status.
+
+#### 3.1.4.9 Alternate Flows
+
+##### AF-1: Invalid Mobile OTP
+
+1. The customer enters an incorrect Mobile OTP.
+2. The system rejects the verification request.
+3. The system increments the failed OTP verification attempt counter.
+4. The system records the failed verification attempt in the audit log.
+5. The system displays a generic verification failure message.
+6. The customer is allowed to retry verification if the maximum attempt limit has not been exceeded.
+
+---
+
+##### AF-2: Expired Mobile OTP
+
+1. The customer submits the Mobile OTP after its validity period has expired.
+2. The system rejects the verification request.
+3. The system invalidates the expired Mobile OTP.
+4. The system informs the customer that the Mobile OTP has expired.
+5. The customer is prompted to request a new Mobile OTP.
+
+---
+
+##### AF-3: Maximum OTP Verification Attempts Exceeded
+
+1. The customer exceeds the maximum permitted Mobile OTP verification attempts.
+2. The system invalidates the active Mobile OTP.
+3. The system temporarily blocks further verification attempts for the current Mobile OTP.
+4. The system instructs the customer to request a new Mobile OTP.
+5. The system records the security event in the audit log.
+
+---
+
+##### AF-4: OTP Resend Limit Exceeded
+
+1. The customer exceeds the maximum permitted Mobile OTP resend requests within the configured time window.
+2. The system rejects the resend request.
+3. The system informs the customer that the resend limit has been exceeded.
+4. The customer is requested to retry after the configured waiting period.
+5. The system records the resend limit violation for security monitoring.
+
+---
+
+##### AF-5: Mobile Number Already Verified
+
+1. The customer attempts to verify a Mobile Number that has already been successfully verified.
+2. The system identifies that the Mobile Verification Status is **VERIFIED**.
+3. The system skips the verification process.
+4. The system informs the customer that the Mobile Number has already been verified.
+
+---
+
+##### AF-6: SMS Delivery Failure
+
+1. The SMS Gateway Service is unable to deliver the Mobile OTP to the customer's registered Mobile Number.
+2. The system records the SMS delivery failure.
+3. The system informs the customer that the OTP could not be delivered.
+4. The customer is provided with the option to request a new Mobile OTP after the configured waiting period.
+5. The system continues to enforce the configured resend policy.
+
+---
+
+##### AF-7: SMS Gateway Service Unavailable
+
+1. The SMS Gateway Service is temporarily unavailable.
+2. The system is unable to generate or deliver the Mobile OTP.
+3. The system records the service unavailability event.
+4. The system informs the customer that the verification service is temporarily unavailable.
+5. The customer is requested to retry later.
+
+---
+
+##### AF-8: Customer Account Not Found
+
+1. The submitted Mobile Number is not associated with any customer account.
+2. The system rejects the verification request.
+3. The system records the unsuccessful verification attempt.
+4. The system displays a generic verification failure message without exposing account information.
+
+---
+
+##### AF-9: Unexpected System Error
+
+1. An unexpected application or infrastructure error occurs during Mobile Number Verification.
+2. The system safely terminates the verification process.
+3. The system records detailed diagnostic information in the application logs.
+4. The customer receives a generic error message without exposing internal implementation details.
+
+#### 3.1.4.10 Postconditions
+
+##### Success Postconditions
+
+1. The customer's Mobile Verification Status shall be updated to **VERIFIED**.
+
+2. The Mobile Verification Timestamp shall be recorded in the system.
+
+3. The verified Mobile OTP shall be permanently invalidated and shall not be reusable.
+
+4. All previous active Mobile OTPs associated with the customer account shall remain invalidated.
+
+5. A successful Mobile Number Verification event shall be recorded in the audit log.
+
+6. If both the Email Address and Mobile Number have been successfully verified, the Customer Account Status shall be updated from **PENDING_VERIFICATION** to **ACTIVE**.
+
+7. The customer shall become eligible to access authenticated platform features only after successful account activation.
+
+8. The system shall notify the customer of the successful Mobile Number Verification.
+
+---
+
+##### Failure Postconditions
+
+1. The Mobile Verification Status shall remain unchanged.
+
+2. The Customer Account Status shall remain **PENDING_VERIFICATION** if all mandatory verification requirements have not been satisfied.
+
+3. Invalid, expired, revoked, or previously used Mobile OTPs shall remain unusable.
+
+4. Failed Mobile OTP verification attempts shall be recorded in the audit log.
+
+5. SMS delivery failures, resend limit violations, and verification failures shall be recorded for operational monitoring and security analysis.
+
+6. The customer shall be allowed to retry Mobile Number Verification only in accordance with the configured retry and resend policies.
+
+7. The system shall not disclose any internal validation logic or security-sensitive information in failure responses.
+
+#### 3.1.4.11 Success Response
+
+Upon successful Mobile Number Verification, the system shall:
+
+1. Display a confirmation message indicating that the Mobile Number has been verified successfully.
+
+2. Update the Mobile Verification Status to **VERIFIED**.
+
+3. Record the Mobile Verification Timestamp.
+
+4. Invalidate the verified Mobile OTP to prevent reuse.
+
+5. Record the successful verification event in the audit log.
+
+6. If both the Email Address and Mobile Number have been successfully verified, update the Customer Account Status to **ACTIVE**.
+
+7. Notify the customer that the account has been activated, if applicable.
+
+8. Redirect the customer to the Login page or the next step in the account activation process, based on the customer's verification status.
+
+---
+
+**Sample Success Message**
+
+> **Mobile Number verified successfully.**
+
+> **Your account has been activated successfully. Please sign in to continue.**
+
+*OR (when Email Verification is still pending):*
+
+> **Mobile Number verified successfully. Please complete Email Verification to activate your account.**
+
+#### 3.1.4.12 Failure Response
+
+The system shall return an appropriate failure response whenever Mobile Number Verification cannot be completed successfully.
+
+| Scenario | System Response |
+|----------|-----------------|
+| Invalid Mobile OTP | Display a generic verification failure message and allow the customer to retry within the permitted verification attempt limit. |
+| Expired Mobile OTP | Inform the customer that the Mobile OTP has expired and provide an option to request a new OTP. |
+| Maximum OTP Verification Attempts Exceeded | Inform the customer that the verification attempt limit has been exceeded and require a new Mobile OTP to continue verification. |
+| OTP Resend Limit Exceeded | Inform the customer that the maximum resend limit has been reached and request them to retry after the configured waiting period. |
+| Mobile Number Already Verified | Inform the customer that the Mobile Number has already been verified. |
+| SMS Delivery Failure | Inform the customer that the OTP could not be delivered and allow the customer to request another OTP in accordance with the configured resend policy. |
+| SMS Gateway Service Unavailable | Inform the customer that the verification service is temporarily unavailable and request them to try again later. |
+| Customer Account Not Found | Display a generic verification failure message without revealing whether the Mobile Number exists in the system. |
+| Account Not Eligible for Verification | Inform the customer that the account is not eligible for Mobile Number Verification in its current state. |
+| Unexpected System Error | Display a generic system error message and advise the customer to try again later. |
+
+---
+
+**Sample Failure Messages**
+
+> **Invalid Mobile OTP. Please try again.**
+
+> **The Mobile OTP has expired. Please request a new OTP.**
+
+> **Maximum verification attempts exceeded. Please request a new Mobile OTP.**
+
+> **You have reached the maximum OTP resend limit. Please try again later.**
+
+> **This Mobile Number has already been verified.**
+
+> **We couldn't deliver your OTP at the moment. Please try again shortly.**
+
+> **The verification service is temporarily unavailable. Please try again later.**
+
+> **Verification could not be completed. Please try again.**
+
+#### 3.1.4.13 Non-Functional Considerations
+
+| Category | Requirement |
+|----------|-------------|
+| Performance | The system shall complete Mobile OTP verification within **2 seconds** under normal operating conditions, excluding SMS delivery latency. |
+| Availability | The Mobile Number Verification service shall maintain a minimum availability of **99.9%**, excluding scheduled maintenance periods. |
+| Scalability | The system shall support concurrent Mobile Number Verification requests without degradation in response time or reliability. |
+| Security | Mobile OTPs shall be generated using a cryptographically secure random number generator and shall never be stored or transmitted in plain text. |
+| Data Privacy | Mobile Numbers, OTPs, and verification-related information shall be processed in accordance with applicable data protection and privacy regulations. |
+| Encryption | All communication between the client, application services, and SMS Gateway shall be encrypted using HTTPS with TLS 1.2 or higher. |
+| Auditability | All Mobile OTP generation, resend requests, verification attempts, verification status changes, SMS delivery events, and security-related activities shall be recorded in the audit logs with timestamps. |
+| Reliability | The system shall ensure that duplicate or delayed SMS messages do not result in multiple successful verifications for the same customer account. |
+| Fault Tolerance | Temporary SMS Gateway failures shall not affect customer account integrity. The system shall allow OTP regeneration according to the configured resend policy after service recovery. |
+| Maintainability | OTP validity duration, resend limits, verification attempt limits, and SMS provider configurations shall be externally configurable without requiring application code changes. |
+| Monitoring | The system shall continuously monitor OTP generation success rate, SMS delivery success rate, verification success rate, verification failures, resend requests, and SMS Gateway availability. |
+| Logging | Application logs shall capture operational events, integration failures, and unexpected exceptions without exposing Mobile OTP values or other sensitive customer information. |
+| Usability | The Mobile Number Verification interface shall clearly guide customers through the verification process and provide meaningful, user-friendly messages for both successful and unsuccessful verification attempts. |
+| Compliance | Mobile Number Verification shall comply with the organization's security policies and all applicable regulatory and legal requirements related to customer authentication and personal data protection. |
+
+#### 3.1.4.14 Acceptance Criteria
+
+| ID | Acceptance Criteria |
+|----|---------------------|
+| AC-MOBILE-001 | The system shall generate a unique six (6)-digit Mobile OTP when Mobile Number Verification is initiated. |
+| AC-MOBILE-002 | The generated Mobile OTP shall expire after **10 minutes** and shall not be accepted thereafter. |
+| AC-MOBILE-003 | The system shall successfully verify the customer's Mobile Number only when the submitted OTP matches the latest active OTP within the validity period. |
+| AC-MOBILE-004 | The system shall invalidate the Mobile OTP immediately after successful verification or after exceeding the maximum verification attempt limit. |
+| AC-MOBILE-005 | The system shall update the Mobile Verification Status to **VERIFIED** and record the Mobile Verification Timestamp upon successful verification. |
+| AC-MOBILE-006 | The system shall activate the customer account only after both the Email Address and Mobile Number have been successfully verified. |
+| AC-MOBILE-007 | The system shall enforce the configured OTP resend limit and verification attempt limit for every customer account. |
+| AC-MOBILE-008 | The system shall record all Mobile OTP generation, resend requests, verification attempts, verification status changes, SMS delivery events, and security-related activities in the audit logs. |
+| AC-MOBILE-009 | The system shall display user-friendly success and failure messages without exposing internal validation logic or sensitive system information. |
+| AC-MOBILE-010 | The Mobile Number Verification feature shall satisfy all defined functional, security, performance, and compliance requirements specified in this Software Requirements Specification (SRS). |
+
 ### 3.1.5 Forgot Password
 
 ### 3.1.6 Reset Password
