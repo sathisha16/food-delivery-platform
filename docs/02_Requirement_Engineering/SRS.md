@@ -593,6 +593,351 @@ The system shall display an appropriate error message indicating the reason for 
 
 ### 3.1.2 Customer Login
 
+#### 3.1.2.1 Description
+
+The Customer Login functionality enables registered customers to securely authenticate themselves and access the Food Delivery Platform using their registered Email Address or Mobile Number along with their password. The system shall verify the customer's credentials, account status, and verification status before granting access.
+
+Upon successful authentication, the system shall generate secure JWT-based authentication tokens, establish a user session, record the login activity for auditing purposes, and redirect the customer to the appropriate landing page. The system shall also protect against unauthorized access through account lock policies, failed login attempt monitoring, rate limiting, and other security mechanisms.
+
+The login functionality shall ensure that only customers with ACTIVE, Email Verified, and Mobile Verified accounts are allowed to access the platform.
+
+#### 3.1.2.2 Actors
+
+##### Primary Actor
+
+- Customer
+
+##### Supporting Actors
+
+- Authentication Service
+- JWT Token Service
+- Email Notification Service
+- Audit Logging Service
+
+#### 3.1.2.3 Preconditions
+
+The following conditions shall be satisfied before a customer can log in:
+
+1. The customer must have successfully completed the registration process.
+2. The customer account must exist in the system.
+3. The customer's Email Address and Mobile Number must be verified.
+4. The customer account status must be **ACTIVE**.
+5. The Authentication Service shall be operational.
+6. The JWT Token Service shall be available.
+7. The platform shall be accessible over a secure HTTPS connection.
+8. The customer must have internet connectivity.
+
+#### 3.1.2.4 Trigger
+
+The login process is initiated when the customer enters their registered Email Address or Mobile Number, password, and clicks the **Login** button on the login page.
+
+#### 3.1.2.5 Input Fields
+
+| Field Name | Data Type | Mandatory | Description | Validation |
+|------------|-----------|-----------|-------------|------------|
+| Email Address / Mobile Number | String | Yes | Registered Email Address or Mobile Number used to identify the customer during authentication. | Must be a valid Email Address or Mobile Number registered with the platform. |
+| Password | Password | Yes | Customer's account password used for authentication. | Shall comply with the platform's password policy and shall not be empty. |
+| Remember Me | Boolean | No | Allows the customer to remain authenticated for an extended duration on the current trusted device. | Accepts only **true** or **false** values. Default value is **false**. |
+
+**Notes:**
+
+- The customer shall provide either a registered **Email Address** or **Mobile Number** as the login identifier.
+- Password characters shall be masked while entering.
+- The platform shall not pre-fill or display the customer's password.
+- The **Remember Me** option shall only affect the authentication session duration and shall not bypass security controls.
+
+#### 3.1.2.6 Business Rules
+
+1. The system shall authenticate a customer only when the submitted Email Address or Mobile Number is associated with an **ACTIVE** customer account and the provided password matches the securely stored password hash.
+
+2. The system shall permit login using either the registered **Email Address** or **Mobile Number** as the customer identifier.
+
+3. The system shall allow authentication only after both the customer's **Email Address** and **Mobile Number** have been successfully verified.
+
+4. The system shall deny authentication for customer accounts with any of the following statuses:
+   - PENDING_VERIFICATION
+   - LOCKED
+   - SUSPENDED
+   - DEACTIVATED
+   - DELETED
+
+5. The system shall verify the submitted password using a secure one-way password hashing algorithm without exposing or storing the password in plain text.
+
+6. The system shall generate a signed JWT Access Token and a secure Refresh Token upon successful authentication.
+
+7. The system shall establish a new authenticated session for every successful login.
+
+8. The system shall support multiple concurrent authenticated sessions across different authorized devices unless restricted by future security policies.
+
+9. The system shall maintain an independent authenticated session for each device.
+
+10. The system shall invalidate only the current authenticated session when the customer selects **Logout**.
+
+11. The system shall invalidate all active authenticated sessions when the customer selects **Logout from All Devices**.
+
+12. The system shall increment the failed login attempt counter after every unsuccessful authentication attempt.
+
+13. The system shall temporarily lock the customer account for **30 minutes** after **five (5) consecutive failed login attempts**.
+
+14. The system shall automatically reset the failed login attempt counter immediately after a successful authentication.
+
+15. The system shall record every successful and unsuccessful authentication attempt in the audit log.
+
+16. The system shall capture the following audit information for each authentication attempt:
+    - Customer Identifier
+    - Login Timestamp (UTC)
+    - IP Address
+    - Device Information
+    - Browser Information
+    - Authentication Status (Success or Failure)
+    - Failure Reason (where applicable)
+
+17. The system shall notify the customer through the registered Email Address whenever the account is temporarily locked due to multiple failed authentication attempts.
+
+18. The **Remember Me** option shall extend the authenticated session duration only for the current trusted device and shall not bypass authentication or account security policies.
+
+19. The system shall enforce HTTPS for all authentication requests and responses.
+
+20. The system shall ensure that authentication error messages do not reveal whether the submitted Email Address or Mobile Number exists in the platform.
+
+#### 3.1.2.7 Validations
+
+| Validation Category | Validation Rule |
+|---------------------|-----------------|
+| Login Identifier | The customer shall provide either a registered **Email Address** or **Mobile Number**. |
+| Email Address Format | When an Email Address is used as the login identifier, it shall comply with the platform's supported email format. |
+| Mobile Number Format | When a Mobile Number is used as the login identifier, it shall contain only numeric characters and comply with the supported country format. |
+| Password | The Password field shall be mandatory and shall not be empty. |
+| Required Fields | Login Identifier and Password shall be mandatory for every authentication request. |
+| Input Length | Input values shall comply with the maximum supported field lengths defined by the platform. |
+| Account Existence | The submitted Email Address or Mobile Number shall be associated with an existing customer account. |
+| Account Status | Authentication shall be permitted only when the customer account status is **ACTIVE**. |
+| Email Verification | The customer's Email Address shall be verified before authentication is permitted. |
+| Mobile Verification | The customer's Mobile Number shall be verified before authentication is permitted. |
+| Password Verification | The submitted password shall match the securely stored password hash. |
+| Failed Login Attempts | The failed login attempt counter shall be incremented after every unsuccessful authentication attempt. |
+| Account Lock | The customer account shall be temporarily locked for **30 minutes** after **five (5) consecutive failed authentication attempts**. |
+| Remember Me | The **Remember Me** field shall accept only Boolean values (**true** or **false**). |
+| Session Creation | A new authenticated session shall be created only after successful authentication. |
+| Rate Limiting | Authentication requests exceeding the configured threshold shall be temporarily restricted to mitigate brute-force attacks. |
+| Input Sanitization | All input values shall be sanitized to prevent SQL Injection, Cross-Site Scripting (XSS), HTML Injection, Command Injection, and other malicious input attacks. |
+| Secure Communication | All authentication requests shall be processed only over HTTPS. |
+| Error Messages | Authentication failure responses shall not disclose whether the Email Address, Mobile Number, or Password is incorrect. |
+| Audit Validation | Every successful and unsuccessful authentication attempt shall be recorded in the audit log. |
+
+#### 3.1.2.8 Main Flow
+
+1. The customer navigates to the Login page.
+
+2. The system displays the Login form.
+
+3. The customer enters the registered Email Address or Mobile Number.
+
+4. The customer enters the account Password.
+
+5. The customer optionally selects the **Remember Me** option.
+
+6. The customer clicks the **Login** button.
+
+7. The system validates all mandatory input fields.
+
+8. The system validates the format of the submitted Email Address or Mobile Number.
+
+9. The system sanitizes all input values to prevent malicious input attacks.
+
+10. The system searches for the customer account associated with the provided Email Address or Mobile Number.
+
+11. The system verifies that the customer account exists.
+
+12. The system verifies that the customer account status is **ACTIVE**.
+
+13. The system verifies that both the Email Address and Mobile Number have been successfully verified.
+
+14. The system verifies that the customer account is not temporarily locked due to excessive failed login attempts.
+
+15. The system securely compares the submitted password with the stored password hash.
+
+16. Upon successful password verification, the system resets the failed login attempt counter.
+
+17. The system generates a signed JWT Access Token.
+
+18. The system generates a secure Refresh Token.
+
+19. The system creates a new authenticated customer session.
+
+20. The system stores the authenticated session information.
+
+21. The system records the successful authentication event in the audit log, including customer identifier, timestamp, IP address, device information, browser information, and authentication status.
+
+22. The system updates the customer's last successful login timestamp.
+
+23. The system redirects the customer to the application Home page or Dashboard.
+
+24. The system displays the personalized customer experience based on the authenticated session.
+
+#### 3.1.2.9 Alternate Flows
+
+##### AF-1: Invalid Credentials
+
+1. The customer enters an incorrect Email Address, Mobile Number, or Password.
+2. The system rejects the authentication request.
+3. The system increments the failed login attempt counter.
+4. The system records the failed authentication attempt in the audit log.
+5. The system displays a generic authentication failure message without revealing whether the Email Address, Mobile Number, or Password is incorrect.
+
+---
+
+##### AF-2: Customer Account Not Found
+
+1. The submitted Email Address or Mobile Number is not associated with any customer account.
+2. The system rejects the authentication request.
+3. The system records the unsuccessful authentication attempt.
+4. The system displays a generic authentication failure message.
+
+---
+
+##### AF-3: Customer Account Locked
+
+1. The customer account has exceeded the maximum permitted failed login attempts.
+2. The system identifies the account as **LOCKED**.
+3. The system denies authentication.
+4. The system informs the customer that the account is temporarily locked.
+5. The system provides guidance to retry after the lock duration or reset the password.
+6. The system records the authentication attempt in the audit log.
+
+---
+
+##### AF-4: Email or Mobile Number Not Verified
+
+1. The customer attempts to authenticate before completing Email Address or Mobile Number verification.
+2. The system denies authentication.
+3. The system informs the customer that account verification is required before login.
+4. The system may provide an option to resend the verification request.
+
+---
+
+##### AF-5: Suspended, Deactivated, or Deleted Account
+
+1. The customer attempts to authenticate using an account that is **SUSPENDED**, **DEACTIVATED**, or **DELETED**.
+2. The system rejects the authentication request.
+3. The system informs the customer that the account is unavailable.
+4. The system records the authentication attempt for audit purposes.
+
+---
+
+##### AF-6: Rate Limit Exceeded
+
+1. The customer exceeds the permitted authentication request threshold within the configured time window.
+2. The system temporarily blocks additional authentication attempts.
+3. The system informs the customer to retry after the specified waiting period.
+4. The system records the rate-limiting event for security monitoring.
+
+---
+
+##### AF-7: Authentication Service Unavailable
+
+1. The Authentication Service is temporarily unavailable or unreachable.
+2. The system is unable to complete customer authentication.
+3. The system records the failure in the application logs.
+4. The system displays a generic service unavailable message.
+5. The customer is requested to try again later.
+
+---
+
+##### AF-8: Unexpected System Error
+
+1. An unexpected application or infrastructure error occurs during authentication.
+2. The system safely terminates the authentication process.
+3. The system records detailed diagnostic information in the application logs.
+4. The customer receives a generic error message without exposing internal implementation details.
+
+#### 3.1.2.10 Postconditions
+
+##### Successful Authentication
+
+Upon successful authentication, the system shall:
+
+1. Authenticate the customer successfully.
+2. Generate a signed JWT Access Token.
+3. Generate a secure Refresh Token.
+4. Establish a new authenticated customer session.
+5. Update the customer's last successful login timestamp.
+6. Reset the failed login attempt counter.
+7. Record the successful authentication event in the audit log.
+8. Redirect the customer to the application Home page or Dashboard.
+
+##### Failed Authentication
+
+Upon unsuccessful authentication, the system shall:
+
+1. Deny customer authentication.
+2. Increment the failed login attempt counter, where applicable.
+3. Record the failed authentication event in the audit log.
+4. Apply the account lock policy if the maximum failed login attempt threshold is reached.
+5. Return an appropriate authentication failure response without exposing sensitive system information.
+
+#### 3.1.2.11 Success Response
+
+Upon successful authentication, the system shall:
+
+- Authenticate the customer successfully.
+- Generate a signed JWT Access Token.
+- Generate a secure Refresh Token.
+- Establish an authenticated customer session.
+- Reset the failed login attempt counter.
+- Update the customer's last successful login timestamp.
+- Record the successful authentication event in the audit log.
+- Redirect the customer to the application Home page or Dashboard.
+- Return a successful authentication response.
+
+#### 3.1.2.12 Failure Response
+
+The system shall reject the authentication request under the following conditions:
+
+- Required fields are missing.
+- Invalid Email Address or Mobile Number format.
+- Invalid Password.
+- Customer account does not exist.
+- Customer account is not ACTIVE.
+- Email Address is not verified.
+- Mobile Number is not verified.
+- Customer account is temporarily locked.
+- Customer account is suspended.
+- Customer account is deactivated.
+- Customer account is deleted.
+- Authentication Service is unavailable.
+- Rate limit exceeded.
+- Internal server error.
+
+In all failure scenarios, the system shall return a generic authentication failure response without revealing sensitive security information.
+
+#### 3.1.2.13 Non-Functional Considerations
+
+- All authentication requests and responses shall be transmitted over HTTPS.
+- Passwords shall never be stored, logged, or transmitted in plain text.
+- Password verification shall use a secure password hashing algorithm (e.g., BCrypt or equivalent).
+- The system shall complete at least **95% of successful authentication requests within 2 seconds** under normal operating conditions.
+- Authentication services shall be continuously available in accordance with the platform's availability requirements.
+- The system shall support concurrent authentication requests from multiple customers without performance degradation.
+- Every successful and unsuccessful authentication attempt shall be recorded for security auditing and compliance purposes.
+- Authentication failure messages shall not disclose whether the Email Address, Mobile Number, or Password is incorrect.
+- The system shall implement protection against brute-force attacks through account lock policies and rate limiting.
+- Authentication shall comply with the platform's security, privacy, and data protection policies.
+
+#### 3.1.2.14 Acceptance Criteria
+
+| ID | Acceptance Criteria |
+|----|---------------------|
+| **AC-LOGIN-001** | Given an ACTIVE customer account, when valid login credentials are submitted, then the system shall authenticate the customer successfully. |
+| **AC-LOGIN-002** | Given an incorrect password, when authentication is attempted, then the system shall reject the authentication request without revealing whether the customer account exists. |
+| **AC-LOGIN-003** | Given an unverified Email Address or Mobile Number, when authentication is attempted, then the system shall deny customer login. |
+| **AC-LOGIN-004** | Given five consecutive failed authentication attempts, when another login attempt is made, then the system shall temporarily lock the customer account for 30 minutes. |
+| **AC-LOGIN-005** | Given a suspended, deactivated, locked, or deleted customer account, when authentication is attempted, then the system shall deny customer login. |
+| **AC-LOGIN-006** | Given successful authentication, when login is completed, then the system shall generate a JWT Access Token, Refresh Token, establish an authenticated session, update the last login timestamp, and redirect the customer to the Home page. |
+| **AC-LOGIN-007** | Every successful and unsuccessful authentication attempt shall be recorded in the audit log. |
+| **AC-LOGIN-008** | Authentication failure responses shall not expose sensitive security information or internal implementation details. |
+
+
 ### 3.1.3 Email Verification
 
 ### 3.1.4 Mobile Number Verification
