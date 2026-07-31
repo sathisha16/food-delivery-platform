@@ -147,3 +147,149 @@ Whenever conflicts arise between project documentation and engineering standards
 > **Note**
 >
 > This document is intended to evolve throughout the lifecycle of the QuickBite project. New engineering standards, governance policies, and project-wide conventions may be introduced as the project matures. However, all changes shall be documented through the Engineering Decision Log and maintained in a controlled and traceable manner.
+
+---
+
+# PART I — PROJECT FOUNDATION
+
+# 8. Project Overview
+
+## 8.1 Introduction
+
+QuickBite is an enterprise-grade full-stack Food Delivery Platform developed as a comprehensive software engineering project. The objective is not only to build a working application but also to demonstrate the complete Software Development Life Cycle (SDLC) followed in real-world product companies.
+
+The project follows a documentation-first development methodology where every major engineering activity is planned, documented, reviewed, and then implemented. This approach ensures that business requirements, software requirements, architecture, database design, APIs, implementation, testing, and deployment remain aligned throughout the project lifecycle.
+
+QuickBite is being developed as a long-term learning and portfolio project that reflects enterprise software engineering standards rather than tutorial-based application development.
+
+---
+
+## 8.2 Project Goal
+
+The primary goal of QuickBite is to design and develop a scalable, maintainable, secure, and production-ready full-stack food delivery platform while following professional software engineering practices.
+
+The project aims to simulate how modern product companies design, document, develop, test, and maintain enterprise applications.
+
+---
+
+## 8.3 Project Scope
+
+QuickBite covers the complete food ordering ecosystem involving multiple actors and business workflows.
+
+The platform includes:
+
+- Customer Application
+- Restaurant Management
+- Delivery Partner Operations
+- Platform Administration
+- Payment Processing
+- Order Management
+- Notification Services
+- Customer Support
+- Reviews and Ratings
+
+Every module is designed independently while integrating seamlessly with the overall platform architecture.
+
+---
+
+## 8.4 Engineering Philosophy
+
+The QuickBite project follows these core engineering principles:
+
+- Documentation before implementation
+- Business requirements drive technical design
+- Modular and scalable architecture
+- Clean and maintainable code
+- Security by design
+- Consistent documentation standards
+- Requirement traceability
+- Enterprise-grade development practices
+- Continuous improvement through documented decisions
+
+---
+
+## 8.5 Development Lifecycle
+
+The development lifecycle followed in QuickBite is:
+
+Business Requirement Document (BRD)
+
+↓
+
+Software Requirement Specification (SRS)
+
+↓
+
+High-Level Design (HLD)
+
+↓
+
+Low-Level Design (LLD)
+
+↓
+
+Database Design
+
+↓
+
+API Specification
+
+↓
+
+Backend Development
+
+↓
+
+Frontend Development
+
+↓
+
+Testing & Quality Assurance
+
+↓
+
+Deployment
+
+↓
+
+Monitoring & Maintenance
+
+Each phase builds upon the previous phase to ensure complete traceability from business requirements to production implementation.
+
+---
+
+## 8.6 Current Project Status
+
+Current Phase:
+
+**Software Requirement Specification (SRS)**
+
+Completed:
+
+- Business Requirement Document (BRD)
+- SRS modules completed up to the current working module
+
+Current Activity:
+
+- SRS documentation for the Notification Module
+
+Upcoming Phases:
+
+- High-Level Design (HLD)
+- Low-Level Design (LLD)
+- Database Design
+- API Design
+- Backend Development
+- Frontend Development
+- Testing
+- Deployment
+
+---
+
+## 8.7 Long-Term Vision
+
+QuickBite is intended to become a complete reference implementation of an enterprise-grade full-stack software system.
+
+The project will demonstrate not only application development but also professional documentation, architecture, engineering decision-making, version control practices, testing strategy, deployment planning, and long-term maintainability.
+
+The final outcome should reflect the engineering standards expected in modern product-based software companies.
