@@ -2131,6 +2131,94 @@ Any deviation shall require documented technical justification and approval thro
 
 # 26. Dependency Management
 
+## 26.1 Purpose
+
+The Dependency Management Standards establish the engineering principles for selecting, managing, updating, and maintaining software dependencies used within the QuickBite platform.
+
+These standards ensure that third-party libraries, frameworks, and external components remain secure, reliable, maintainable, and aligned with the project's long-term engineering objectives.
+
+---
+
+## 26.2 Scope
+
+These standards apply to all software dependencies used throughout the QuickBite platform, including:
+
+- Backend Frameworks
+- Frontend Libraries
+- Build Tools
+- Testing Frameworks
+- Infrastructure Components
+- Development Utilities
+- Third-Party SDKs
+
+---
+
+## 26.3 Dependency Selection
+
+Dependencies shall be selected based on technical suitability, community support, long-term maintainability, security, licensing, and compatibility with the overall platform architecture.
+
+Only dependencies that provide measurable engineering value should be introduced into the project.
+
+---
+
+## 26.4 Version Management
+
+Dependency versions shall be managed in a controlled and consistent manner.
+
+Engineering teams should avoid unnecessary version fragmentation across project components.
+
+Version upgrades shall be planned, reviewed, tested, and documented before adoption.
+
+---
+
+## 26.5 Security
+
+Dependencies shall be regularly evaluated for known security vulnerabilities.
+
+Critical security issues should be addressed within an appropriate timeframe based on risk assessment.
+
+Unsupported or high-risk dependencies should be replaced whenever practical.
+
+---
+
+## 26.6 Compatibility
+
+New dependencies shall be evaluated for compatibility with existing project components.
+
+Introducing a dependency shall not unnecessarily increase technical complexity or create avoidable conflicts within the platform.
+
+---
+
+## 26.7 Dependency Lifecycle
+
+Dependencies should be periodically reviewed throughout the software lifecycle.
+
+Obsolete, unused, or unsupported dependencies should be removed to reduce maintenance effort and security exposure.
+
+---
+
+## 26.8 Documentation
+
+Significant dependencies and the rationale for their adoption shall be documented within the relevant technical documentation.
+
+Major dependency changes should reference the corresponding Engineering Decision Log entry where applicable.
+
+---
+
+## 26.9 Change Management
+
+Dependency additions, upgrades, and removals shall follow the project's change management process.
+
+Changes affecting production behavior shall undergo appropriate review, testing, and approval before deployment.
+
+---
+
+## 26.10 Standard Compliance
+
+All software dependencies used within the QuickBite platform shall comply with these Dependency Management Standards.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 27. Security Standards
 
 # 28. Performance Engineering Standards
