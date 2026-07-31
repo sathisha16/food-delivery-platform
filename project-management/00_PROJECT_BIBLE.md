@@ -2439,6 +2439,106 @@ Any deviation shall require documented technical justification and approval thro
 
 # 29. Version Control Standards
 
+## 29.1 Purpose
+
+The Version Control Standards establish the engineering principles for managing source code, documentation, configuration, and other project artifacts within the QuickBite platform.
+
+These standards ensure that all project changes are traceable, recoverable, collaborative, and consistently managed throughout the software development lifecycle.
+
+---
+
+## 29.2 Scope
+
+These standards apply to all version-controlled artifacts within the QuickBite project, including:
+
+- Source Code
+- Documentation
+- Configuration Files
+- Database Scripts
+- Infrastructure Definitions
+- Build Configurations
+- Deployment Assets
+
+---
+
+## 29.3 Version Control Principles
+
+Version control shall:
+
+- Maintain a complete history of project changes.
+- Support collaborative software development.
+- Enable change traceability.
+- Protect project integrity.
+- Facilitate rollback and recovery when required.
+
+All project artifacts shall be maintained under version control unless there is a justified operational reason not to do so.
+
+---
+
+## 29.4 Repository Management
+
+Project repositories shall be organized in a consistent and maintainable manner.
+
+Repository structure should support clear separation of concerns, logical organization of project assets, and efficient collaboration among engineering teams.
+
+---
+
+## 29.5 Change Traceability
+
+Every change committed to the repository shall be traceable to its corresponding business, technical, maintenance, or operational objective.
+
+Changes should remain understandable throughout the lifecycle of the project.
+
+---
+
+## 29.6 Protected Branches
+
+Critical branches shall be protected through appropriate repository governance.
+
+Protection mechanisms may include:
+
+- Restricted Direct Commits
+- Mandatory Code Reviews
+- Required Approval Processes
+- Automated Validation
+- Controlled Merge Policies
+
+Implementation details shall be defined within the repository configuration.
+
+---
+
+## 29.7 Repository Integrity
+
+Engineering teams shall preserve repository integrity through disciplined version control practices.
+
+Repository history should remain accurate, understandable, and maintainable.
+
+Unnecessary history manipulation should be avoided except where operationally justified.
+
+---
+
+## 29.8 Documentation
+
+Version control workflows, repository organization, and operational practices shall be documented and maintained as part of the project's engineering documentation.
+
+Repository-specific implementation details shall remain outside this handbook.
+
+---
+
+## 29.9 Continuous Improvement
+
+Version control practices should be periodically reviewed and improved as the project evolves.
+
+Engineering teams should adopt improvements that enhance collaboration, reliability, maintainability, and engineering productivity.
+
+---
+
+## 29.10 Standard Compliance
+
+All project contributors shall comply with these Version Control Standards.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 30. Branching Strategy
 
 # 31. Commit Message Convention
