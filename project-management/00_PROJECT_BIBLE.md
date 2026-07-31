@@ -928,6 +928,113 @@ All detailed software designs produced during the project lifecycle shall comply
 
 # 16. Application Architecture Standards
 
+## 16.1 Purpose
+
+The Application Architecture Standards define the engineering standards that govern the architecture of the QuickBite platform.
+
+These standards ensure consistency across backend services, frontend applications, shared libraries, supporting infrastructure, and future system extensions.
+
+The purpose of these standards is to establish a maintainable, scalable, secure, and production-ready application architecture throughout the software development lifecycle.
+
+---
+
+## 16.2 Scope
+
+These standards apply to all software components developed as part of the QuickBite platform, including:
+
+- Backend Applications
+- Frontend Applications
+- Administrative Applications
+- Shared Components
+- Platform Services
+- Integration Components
+- Supporting Infrastructure
+
+---
+
+## 16.3 Architectural Consistency
+
+Every application developed within the QuickBite platform shall follow a consistent architectural approach.
+
+Architecture shall remain predictable, modular, and maintainable across all application layers to simplify development, testing, deployment, and future enhancements.
+
+---
+
+## 16.4 Layered Organization
+
+Application components shall be organized into clearly defined architectural layers.
+
+Each layer shall have a specific responsibility and communicate only through well-defined interfaces.
+
+Layer responsibilities shall remain clearly separated to reduce coupling and improve maintainability.
+
+---
+
+## 16.5 Modular Structure
+
+Application functionality shall be organized into independent modules representing business capabilities.
+
+Modules should interact through clearly defined contracts while avoiding unnecessary dependencies.
+
+Each module shall remain independently understandable, maintainable, and extensible.
+
+---
+
+## 16.6 Shared Standards
+
+Common engineering concerns shall be standardized across the platform wherever appropriate.
+
+Examples include:
+
+- Authentication
+- Authorization
+- Validation
+- Logging
+- Error Handling
+- Configuration
+- Monitoring
+- Auditing
+
+Shared standards reduce duplication and promote consistency across applications.
+
+---
+
+## 16.7 Extensibility
+
+The application architecture shall support the addition of new business capabilities without requiring major architectural restructuring.
+
+Future enhancements should integrate into the existing architecture through well-defined extension points.
+
+---
+
+## 16.8 Technology Evolution
+
+The architecture shall remain adaptable to future technology changes.
+
+Business capabilities should remain insulated from framework-specific implementation details wherever practical.
+
+This approach supports future upgrades, migrations, and long-term maintainability.
+
+---
+
+## 16.9 Documentation Requirement
+
+All architectural decisions shall be documented within the appropriate engineering artifacts, including:
+
+- High-Level Design (HLD)
+- Low-Level Design (LLD)
+- Engineering Decision Log
+
+This handbook defines the standards, while implementation-specific architectural decisions belong to the respective design documents.
+
+---
+
+## 16.10 Standard Compliance
+
+Every application developed within the QuickBite platform shall comply with the application architecture standards defined in this handbook.
+
+Any exception shall be formally reviewed, documented, justified, and approved before implementation.
+
 # 17. API Design Standards
 
 # 18. Database Design Standards
