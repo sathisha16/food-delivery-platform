@@ -2669,6 +2669,140 @@ Any deviation shall require documented technical justification and approval thro
 
 # 31. Commit Message Convention
 
+## 31.1 Purpose
+
+The Commit Message Convention establishes a standardized approach for documenting changes made to the QuickBite platform through version control.
+
+Consistent commit messages improve traceability, collaboration, code review efficiency, release management, and long-term project maintainability.
+
+---
+
+## 31.2 Scope
+
+These standards apply to every commit made to repositories belonging to the QuickBite platform.
+
+All contributors shall follow the approved commit message format regardless of the size or complexity of the change.
+
+---
+
+## 31.3 Commit Message Principles
+
+Commit messages shall:
+
+- Clearly describe the purpose of the change.
+- Be concise while remaining meaningful.
+- Reflect the actual work performed.
+- Support future maintenance and auditing.
+- Maintain consistency across the project.
+
+Commit messages shall describe **what changed**, not every implementation detail.
+
+---
+
+## 31.4 Standard Format
+
+Commit messages shall follow the format:
+
+```
+<type>(<scope>): <summary>
+```
+
+Where:
+
+- **type** identifies the category of change.
+- **scope** identifies the affected project area.
+- **summary** provides a concise description of the change.
+
+---
+
+## 31.5 Approved Commit Types
+
+The following commit types are approved for use within the QuickBite project:
+
+- feat
+- fix
+- docs
+- refactor
+- test
+- chore
+- style
+- perf
+- build
+- ci
+- revert
+
+Additional commit types shall be introduced only through an approved engineering decision.
+
+---
+
+## 31.6 Scope Naming
+
+The scope should identify the primary component or functional area affected by the change.
+
+Examples include:
+
+- project
+- order
+- customer
+- restaurant
+- payment
+- delivery
+- notification
+- auth
+- api
+- database
+
+Scope names should remain short, meaningful, and consistent throughout the project.
+
+---
+
+## 31.7 Commit Summary
+
+The summary shall:
+
+- Begin with a lowercase verb.
+- Describe the completed change.
+- Avoid unnecessary punctuation.
+- Remain concise and informative.
+
+Examples:
+
+```
+docs(project): define branching strategy
+
+feat(order): add order creation endpoint
+
+fix(payment): resolve payment timeout
+
+refactor(customer): simplify validation logic
+
+test(auth): add authentication service tests
+```
+
+---
+
+## 31.8 Commit Quality
+
+Each commit should represent a single logical unit of work whenever practical.
+
+Large unrelated changes should be divided into separate commits to improve readability, reviewability, and rollback capability.
+
+---
+
+## 31.9 Documentation
+
+Commit messages become part of the permanent project history.
+
+Engineering teams should ensure that commit history accurately reflects the evolution of the QuickBite platform and supports future maintenance activities.
+
+---
+
+## 31.10 Standard Compliance
+
+All contributors shall follow the Commit Message Convention defined within this handbook.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 32. Code Review Guidelines
 
 # 33. Pull Request Standards
