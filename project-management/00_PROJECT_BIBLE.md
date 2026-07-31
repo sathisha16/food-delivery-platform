@@ -710,3 +710,113 @@ Documentation should be updated before implementation whenever requirements or a
 Documentation shall remain an actively maintained project artifact throughout the software development lifecycle.
 
 Outdated, inconsistent, or obsolete documentation should be corrected as part of normal engineering activities rather than postponed indefinitely.
+
+---
+
+# PART II — ARCHITECTURE GOVERNANCE
+
+# 14. Architecture Principles
+
+# 15. Design Principles
+
+# 16. Application Architecture Standards
+
+# 17. API Design Standards
+
+# 18. Database Design Standards
+
+# 19. Integration Standards
+
+---
+
+# PART III — ENGINEERING STANDARDS
+
+# 20. Coding Standards
+
+# 21. Naming Conventions
+
+# 22. Error Handling Standards
+
+# 23. Exception Handling Standards
+
+# 24. Logging Standards
+
+# 25. Configuration Management
+
+# 26. Dependency Management
+
+# 27. Security Standards
+
+# 28. Performance Engineering Standards
+
+---
+
+# PART IV — DEVELOPMENT GOVERNANCE
+
+# 29. Version Control Standards
+
+# 30. Branching Strategy
+
+# 31. Commit Message Convention
+
+# 32. Code Review Guidelines
+
+# 33. Pull Request Standards
+
+# 34. Definition of Ready (DoR)
+
+# 35. Definition of Done (DoD)
+
+---
+
+# PART V — QUALITY ENGINEERING
+
+# 36. Testing Standards
+
+# 37. Quality Assurance Standards
+
+# 38. Technical Debt Management
+
+# 39. Refactoring Guidelines
+
+---
+
+# PART VI — OPERATIONS
+
+# 40. Deployment Standards
+
+# 41. Monitoring Standards
+
+# 42. Backup and Recovery Standards
+
+# 43. Incident Management
+
+# 44. Release Management
+
+---
+
+# PART VII — PROJECT GOVERNANCE
+
+# 45. Engineering Decision Process
+
+# 46. Documentation Maintenance Process
+
+# 47. Change Management Process
+
+# 48. Risk Management Principles
+
+# 49. Knowledge Management
+
+# 50. Engineering Handbook Maintenance
+
+---
+
+# APPENDICES
+
+# Appendix A. Glossary
+
+# Appendix B. Acronyms
+
+# Appendix C. Reference Documents
+
+# Appendix D. Revision History
