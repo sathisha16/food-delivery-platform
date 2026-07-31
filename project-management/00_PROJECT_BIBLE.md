@@ -2908,6 +2908,110 @@ Any deviation shall require documented technical justification and approval thro
 
 # 33. Pull Request Standards
 
+## 33.1 Purpose
+
+The Pull Request Standards establish the engineering principles for proposing, reviewing, approving, and merging software changes within the QuickBite platform.
+
+These standards ensure that software changes are properly validated, reviewed, documented, and integrated while maintaining code quality, project stability, and engineering consistency.
+
+---
+
+## 33.2 Scope
+
+These standards apply to all pull requests submitted for QuickBite repositories, including:
+
+- Source Code
+- Documentation
+- Configuration
+- Database Changes
+- Infrastructure Definitions
+- Build and Deployment Assets
+
+---
+
+## 33.3 Pull Request Principles
+
+Every pull request shall:
+
+- Represent a single logical unit of work.
+- Be understandable without excessive explanation.
+- Support efficient review.
+- Minimize unnecessary changes.
+- Maintain repository quality and stability.
+
+Large unrelated changes should be divided into multiple pull requests whenever practical.
+
+---
+
+## 33.4 Pull Request Requirements
+
+Before requesting review, contributors shall ensure that:
+
+- The implementation is complete.
+- Relevant testing has been performed.
+- Coding standards have been followed.
+- Documentation has been updated where required.
+- Merge conflicts have been resolved.
+
+Pull requests should be ready for review rather than requesting reviewers to identify incomplete work.
+
+---
+
+## 33.5 Pull Request Description
+
+Each pull request should include sufficient information for reviewers to understand the proposed change.
+
+Descriptions should include, where applicable:
+
+- Business purpose
+- Summary of changes
+- Testing performed
+- Dependencies
+- Known limitations
+- Related work items
+
+---
+
+## 33.6 Review Process
+
+Pull requests shall undergo the project's defined code review process before being merged.
+
+Reviewers shall verify compliance with engineering standards, architecture principles, coding conventions, security requirements, and project quality expectations.
+
+---
+
+## 33.7 Merge Criteria
+
+A pull request shall be eligible for merging only after:
+
+- Required reviews are completed.
+- Review feedback has been addressed.
+- Required approvals are obtained.
+- Repository validation succeeds.
+- Project standards are satisfied.
+
+---
+
+## 33.8 Merge Strategy
+
+The selected merge strategy shall preserve repository readability, maintain traceability, and support future maintenance activities.
+
+Repository administrators shall define the approved merge strategy for protected branches.
+
+---
+
+## 33.9 Continuous Improvement
+
+Pull request practices should be periodically reviewed and improved based on engineering experience, project growth, and lessons learned.
+
+---
+
+## 33.10 Standard Compliance
+
+All contributors shall comply with these Pull Request Standards.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 34. Definition of Ready (DoR)
 
 # 35. Definition of Done (DoD)
