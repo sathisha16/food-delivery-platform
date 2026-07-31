@@ -615,3 +615,98 @@ Changes shall be documented through the Engineering Decision Log whenever they a
 All engineering contributors shall follow the principles defined in this handbook.
 
 Any intentional deviation from these principles shall be reviewed, justified, documented, and approved before implementation.
+
+---
+
+# 13. Documentation Standards
+
+## 13.1 Purpose
+
+Documentation is a first-class engineering asset within the QuickBite project.
+
+Every significant engineering activity shall be supported by clear, structured, version-controlled, and maintainable documentation to ensure knowledge preservation, traceability, and long-term maintainability.
+
+---
+
+## 13.2 Documentation Philosophy
+
+QuickBite follows a documentation-first engineering approach.
+
+Documentation is created to:
+
+- Define requirements before implementation.
+- Preserve engineering knowledge.
+- Improve collaboration.
+- Support architectural decision-making.
+- Reduce ambiguity.
+- Simplify maintenance.
+- Enable future project evolution.
+
+Documentation shall evolve together with the source code throughout the project lifecycle.
+
+---
+
+## 13.3 Documentation Principles
+
+All project documentation shall follow these principles:
+
+- Accuracy
+- Completeness
+- Consistency
+- Traceability
+- Version Control
+- Readability
+- Maintainability
+- Reviewability
+
+Documentation should describe the system clearly without unnecessary duplication across multiple documents.
+
+---
+
+## 13.4 Single Source of Truth
+
+Each engineering artifact shall own a clearly defined responsibility.
+
+Information should be maintained in its designated document rather than duplicated across multiple documents.
+
+For example:
+
+| Document | Primary Responsibility |
+|----------|-------------------------|
+| Business Requirement Document (BRD) | Business requirements and project objectives |
+| Software Requirement Specification (SRS) | Functional and non-functional software requirements |
+| High-Level Design (HLD) | Overall system architecture |
+| Low-Level Design (LLD) | Detailed component design |
+| Engineering Handbook | Engineering governance, standards, and principles |
+| Engineering Decision Log | Significant engineering decisions and rationale |
+| Project Continuity Log | Development session history and current project state |
+
+---
+
+## 13.5 Version Control
+
+All documentation shall be maintained under version control together with the project source code.
+
+Every meaningful documentation update should be committed using descriptive commit messages to preserve the complete evolution of the project.
+
+---
+
+## 13.6 Documentation Review
+
+Major documentation updates should be reviewed for:
+
+- Technical correctness
+- Consistency
+- Completeness
+- Alignment with existing project artifacts
+- Engineering standards
+
+Documentation should be updated before implementation whenever requirements or architecture change.
+
+---
+
+## 13.7 Documentation Maintenance
+
+Documentation shall remain an actively maintained project artifact throughout the software development lifecycle.
+
+Outdated, inconsistent, or obsolete documentation should be corrected as part of normal engineering activities rather than postponed indefinitely.
