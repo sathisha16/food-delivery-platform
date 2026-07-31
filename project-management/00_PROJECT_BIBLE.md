@@ -4953,10 +4953,184 @@ Any proposed deviation shall require documented technical justification, review,
 
 # APPENDICES
 
-# Appendix A. Glossary
+# Appendix A. Technology Governance & Approved Technology Catalog
 
-# Appendix B. Acronyms
+## A.1 Purpose
 
-# Appendix C. Reference Documents
+This appendix defines the technology governance principles and the approved technology catalog for the QuickBite platform.
 
-# Appendix D. Revision History
+QuickBite follows a polyglot microservices architecture where different services may adopt different technologies based on business needs, technical requirements, scalability, operational considerations, and long-term maintainability.
+
+The purpose of this appendix is to establish a controlled technology selection process rather than mandate a single technology stack across the entire platform.
+
+---
+
+## A.2 Technology Governance Principles
+
+Technology selection shall be based on:
+
+- Business Requirements
+- Functional Requirements
+- Non-Functional Requirements
+- Security Requirements
+- Scalability Requirements
+- Performance Requirements
+- Operational Simplicity
+- Team Expertise
+- Long-Term Maintainability
+
+Technology shall not be selected solely based on popularity, industry trends, or personal preference.
+
+Every significant technology adoption shall be evaluated and approved through the Engineering Decision Process.
+
+# Appendix B. Glossary
+
+## B.1 Purpose
+
+This glossary defines commonly used business, technical, architectural, and engineering terms used throughout the QuickBite project documentation.
+
+The glossary ensures consistent understanding and interpretation of terminology across all project stakeholders.
+
+---
+
+## B.2 Business Terms
+
+| Term | Definition |
+|------|------------|
+| Customer | End user who places food orders through the QuickBite platform. |
+| Restaurant Partner | Registered restaurant providing food through QuickBite. |
+| Delivery Partner | Individual responsible for delivering customer orders. |
+| Merchant | Business entity operating one or more restaurants on the platform. |
+| Order | Customer purchase request submitted through the platform. |
+
+---
+
+## B.3 Engineering Terms
+
+| Term | Definition |
+|------|------------|
+| Microservice | Independently deployable service responsible for a specific business capability. |
+| API | Application Programming Interface used for communication between systems. |
+| REST | Representational State Transfer architectural style for APIs. |
+| Event | Business occurrence communicated asynchronously between services. |
+| Service Discovery | Mechanism used by services to locate one another dynamically. |
+
+---
+
+## B.4 Architecture Terms
+
+| Term | Definition |
+|------|------------|
+| High Availability | Ability of the platform to remain operational with minimal downtime. |
+| Scalability | Ability of the system to handle increasing workload. |
+| Fault Tolerance | Ability to continue operating despite component failures. |
+| Observability | Ability to understand system health through logs, metrics, and traces. |
+| Resilience | Ability of the system to recover from failures gracefully. |
+
+---
+
+## B.5 Document Maintenance
+
+The glossary shall be updated whenever new terminology becomes part of the QuickBite documentation.
+
+# Appendix C. Acronyms
+
+## C.1 Purpose
+
+This appendix defines commonly used acronyms within the QuickBite project documentation.
+
+---
+
+| Acronym | Meaning |
+|----------|---------|
+| API | Application Programming Interface |
+| BRD | Business Requirements Document |
+| SRS | Software Requirements Specification |
+| HLD | High-Level Design |
+| LLD | Low-Level Design |
+| ERD | Entity Relationship Diagram |
+| JWT | JSON Web Token |
+| ORM | Object Relational Mapping |
+| CI | Continuous Integration |
+| CD | Continuous Delivery / Continuous Deployment |
+| DevOps | Development and Operations |
+| SLA | Service Level Agreement |
+| KPI | Key Performance Indicator |
+| RTO | Recovery Time Objective |
+| RPO | Recovery Point Objective |
+| POC | Proof of Concept |
+| DDD | Domain-Driven Design |
+| CQRS | Command Query Responsibility Segregation |
+| SOLID | Five Object-Oriented Design Principles |
+| DRY | Don't Repeat Yourself |
+| KISS | Keep It Simple, Stupid |
+| YAGNI | You Aren't Gonna Need It |
+| DTO | Data Transfer Object |
+| DAO | Data Access Object |
+| UUID | Universally Unique Identifier |
+| SQL | Structured Query Language |
+| NoSQL | Not Only SQL |
+| CDN | Content Delivery Network |
+| CDN | Content Delivery Network |
+| CDN | Content Delivery Network |
+
+---
+
+The acronym list shall be updated whenever new abbreviations are introduced into project documentation.
+
+# Appendix D. Reference Documents
+
+## D.1 Purpose
+
+This appendix identifies the primary project documents that collectively define the QuickBite platform.
+
+---
+
+## D.2 Core Project Documents
+
+| Document | Purpose |
+|----------|---------|
+| Business Requirements Document (BRD) | Defines business objectives and requirements. |
+| Software Requirements Specification (SRS) | Defines functional and non-functional requirements. |
+| High-Level Design (HLD) | Defines overall system architecture. |
+| Low-Level Design (LLD) | Defines detailed component design. |
+| Engineering Handbook | Defines engineering governance and standards. |
+| API Specifications | Defines API contracts and interface standards. |
+| Database Design Document | Defines database schema and data model. |
+| Engineering Decision Log | Records major engineering decisions. |
+| Risk Register | Tracks project risks and mitigation strategies. |
+| Project Roadmap | Defines planned project milestones and delivery phases. |
+| Change Log | Records significant project changes. |
+| Project Continuity Log | Captures project history and continuity information. |
+
+---
+
+## D.3 External References
+
+Where appropriate, engineering teams may reference:
+
+- Official framework documentation
+- Programming language specifications
+- Industry standards
+- Cloud provider documentation
+- Security best practices
+
+External references shall complement, but not replace, the project's official documentation.
+
+# Appendix E. Revision History
+
+## E.1 Purpose
+
+This appendix records significant revisions made to the Engineering Handbook.
+
+---
+
+| Version | Date | Description | Author |
+|----------|------|-------------|--------|
+| 0.1 | Initial Draft | Engineering Handbook structure created | Project Team |
+| 0.5 | Major Sections Added | Engineering governance sections expanded | Project Team |
+| 1.0 | Initial Release | Engineering Handbook completed | Project Team |
+
+---
+
+Future revisions shall be recorded in this appendix to maintain complete document history and traceability.
