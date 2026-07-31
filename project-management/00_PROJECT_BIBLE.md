@@ -1353,6 +1353,110 @@ Any deviation shall require documented technical justification, engineering revi
 
 # 20. Coding Standards
 
+## 20.1 Purpose
+
+The Coding Standards establish the engineering rules for writing, reviewing, and maintaining source code within the QuickBite platform.
+
+These standards promote readability, consistency, maintainability, security, testability, and long-term sustainability across all software components developed for the project.
+
+The standards defined in this section apply to backend applications, frontend applications, shared libraries, utility components, automation scripts, and future platform services.
+
+---
+
+## 20.2 Coding Philosophy
+
+Source code shall be written primarily for human understanding rather than only for machine execution.
+
+Every implementation should prioritize clarity, simplicity, and maintainability while satisfying approved business and technical requirements.
+
+---
+
+## 20.3 Consistency
+
+A consistent coding style shall be maintained throughout the QuickBite platform.
+
+Consistency shall be preserved in:
+
+- Code organization
+- File structure
+- Formatting
+- Naming
+- Error handling
+- Logging
+- Documentation
+- Testing practices
+
+Consistent code improves collaboration, maintainability, and long-term project evolution.
+
+---
+
+## 20.4 Readability
+
+Code should be self-explanatory whenever practical.
+
+Developers should prefer clear structure, meaningful identifiers, and straightforward logic over unnecessarily complex implementations.
+
+Code should remain understandable to engineers who were not involved in its original development.
+
+---
+
+## 20.5 Maintainability
+
+Software should be written with future modification in mind.
+
+Changes to business requirements should require minimal impact on unrelated components.
+
+Engineering decisions should reduce long-term maintenance effort rather than optimize only for initial implementation speed.
+
+---
+
+## 20.6 Reusability
+
+Reusable components should be developed when they provide measurable engineering value.
+
+Common functionality should be centralized to reduce duplication while avoiding unnecessary abstraction.
+
+---
+
+## 20.7 Secure Coding
+
+Security considerations shall be incorporated throughout implementation.
+
+Developers shall follow approved security standards for:
+
+- Input validation
+- Output handling
+- Authentication
+- Authorization
+- Sensitive data handling
+- Secure communication
+
+Security shall remain an integral part of software development rather than a post-implementation activity.
+
+---
+
+## 20.8 Code Documentation
+
+Source code should include documentation where necessary to explain business rules, complex algorithms, architectural decisions, or implementation constraints.
+
+Comments shall clarify intent rather than restate obvious implementation details.
+
+---
+
+## 20.9 Code Review Readiness
+
+Every implementation should be written with code review in mind.
+
+Code submitted for review should be complete, understandable, appropriately tested, and aligned with the engineering standards defined within this handbook.
+
+---
+
+## 20.10 Standard Compliance
+
+All source code developed for the QuickBite platform shall comply with the Coding Standards defined in this handbook.
+
+Project-specific implementation guidelines for individual programming languages and frameworks shall be maintained separately and shall complement these standards.
+
 # 21. Naming Conventions
 
 # 22. Error Handling Standards
