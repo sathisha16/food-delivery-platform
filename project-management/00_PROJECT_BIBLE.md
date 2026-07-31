@@ -3791,6 +3791,114 @@ Any deviation shall require documented technical justification and approval thro
 
 # 41. Monitoring Standards
 
+## 41.1 Purpose
+
+The Monitoring Standards establish the engineering principles for observing, measuring, and maintaining the operational health of the QuickBite platform.
+
+These standards ensure that engineering teams can proactively identify issues, assess system health, monitor business-critical operations, and maintain platform reliability throughout the software lifecycle.
+
+---
+
+## 41.2 Scope
+
+These standards apply to all operational monitoring activities within the QuickBite platform, including:
+
+- Application Monitoring
+- Infrastructure Monitoring
+- API Monitoring
+- Database Monitoring
+- Background Job Monitoring
+- External Service Monitoring
+- Business Process Monitoring
+
+---
+
+## 41.3 Monitoring Principles
+
+Monitoring shall:
+
+- Provide timely visibility into system health.
+- Support proactive issue detection.
+- Enable rapid diagnosis of operational problems.
+- Assist capacity planning.
+- Improve platform reliability and availability.
+
+Monitoring shall be considered an essential operational capability rather than an optional enhancement.
+
+---
+
+## 41.4 Operational Visibility
+
+Monitoring should provide sufficient visibility into:
+
+- Service Availability
+- System Health
+- Resource Utilization
+- Application Performance
+- Business-Critical Processes
+
+Engineering teams should be able to understand the operational state of the platform using standardized monitoring practices.
+
+---
+
+## 41.5 Alerting
+
+Monitoring systems should support timely notification of significant operational events.
+
+Alerting should:
+
+- Focus on actionable conditions.
+- Minimize unnecessary alert noise.
+- Support appropriate operational response.
+- Be periodically reviewed for effectiveness.
+
+---
+
+## 41.6 Monitoring Metrics
+
+Appropriate operational metrics should be collected and evaluated where applicable.
+
+Examples include:
+
+- Response Time
+- Error Rate
+- Resource Utilization
+- Request Volume
+- Service Availability
+- Background Job Status
+
+The selection of metrics should align with business objectives and operational priorities.
+
+---
+
+## 41.7 Incident Support
+
+Monitoring information should support operational investigations, incident response, troubleshooting, and root cause analysis.
+
+Monitoring data should remain sufficiently detailed to assist engineering teams while protecting sensitive information.
+
+---
+
+## 41.8 Documentation
+
+Monitoring strategies, dashboards, alerting rules, and operational procedures shall be documented within the relevant operational documentation.
+
+Implementation-specific monitoring configurations shall remain outside this handbook.
+
+---
+
+## 41.9 Continuous Improvement
+
+Monitoring practices should be periodically evaluated and improved based on operational experience, incident reviews, evolving business requirements, and engineering feedback.
+
+---
+
+## 41.10 Standard Compliance
+
+All monitoring activities within the QuickBite platform shall comply with these Monitoring Standards.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 42. Backup and Recovery Standards
 
 # 43. Incident Management
