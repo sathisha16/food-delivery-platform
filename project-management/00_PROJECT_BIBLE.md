@@ -3225,6 +3225,110 @@ Any approved exception shall be documented together with its associated justific
 
 # 36. Testing Standards
 
+## 36.1 Purpose
+
+The Testing Standards establish the engineering principles for planning, designing, executing, and maintaining testing activities throughout the QuickBite platform.
+
+These standards ensure that software is validated systematically, defects are identified early, and product quality is maintained throughout the software development lifecycle.
+
+---
+
+## 36.2 Scope
+
+These standards apply to all testing activities within the QuickBite platform, including:
+
+- Unit Testing
+- Integration Testing
+- System Testing
+- User Acceptance Testing
+- Regression Testing
+- Performance Testing
+- Security Testing
+
+---
+
+## 36.3 Testing Principles
+
+Testing shall:
+
+- Validate functional and non-functional requirements.
+- Identify defects as early as practical.
+- Support reliable software releases.
+- Reduce business and technical risks.
+- Improve long-term software quality.
+
+Testing shall be integrated throughout the development lifecycle rather than treated as a final project activity.
+
+---
+
+## 36.4 Test Planning
+
+Testing activities shall be planned before implementation begins where appropriate.
+
+Test planning should define:
+
+- Testing objectives
+- Scope
+- Test approach
+- Required environments
+- Success criteria
+- Responsibilities
+
+---
+
+## 36.5 Test Coverage
+
+Testing should provide sufficient coverage to validate expected system behavior.
+
+Coverage should be risk-based and appropriate for the complexity, criticality, and business impact of the functionality being delivered.
+
+---
+
+## 36.6 Test Environments
+
+Testing should be performed using environments that appropriately represent the intended deployment environment.
+
+Test environments should remain stable, controlled, and properly maintained throughout testing activities.
+
+---
+
+## 36.7 Defect Management
+
+Defects identified during testing shall be documented, prioritized, tracked, and resolved according to the project's defect management process.
+
+Critical defects shall be addressed before production release unless formally accepted through the project's governance process.
+
+---
+
+## 36.8 Test Documentation
+
+Testing activities shall be supported by appropriate documentation.
+
+Documentation may include:
+
+- Test Plans
+- Test Cases
+- Test Data
+- Test Results
+- Defect Reports
+- Test Summary Reports
+
+Implementation-specific testing artifacts shall be maintained separately from this handbook.
+
+---
+
+## 36.9 Continuous Improvement
+
+Testing practices should be periodically reviewed and improved based on project experience, quality metrics, engineering feedback, and lessons learned.
+
+---
+
+## 36.10 Standard Compliance
+
+All testing activities within the QuickBite platform shall comply with these Testing Standards.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 37. Quality Assurance Standards
 
 # 38. Technical Debt Management
