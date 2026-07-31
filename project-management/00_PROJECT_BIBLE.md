@@ -3122,6 +3122,103 @@ Any approved exception shall be documented together with its associated risks an
 
 # 35. Definition of Done (DoD)
 
+## 35.1 Purpose
+
+The Definition of Done (DoD) establishes the minimum completion criteria that every work item shall satisfy before it is considered complete within the QuickBite platform.
+
+Its purpose is to ensure that completed work consistently meets the project's quality, engineering, documentation, testing, and operational standards before integration or release.
+
+---
+
+## 35.2 Scope
+
+The Definition of Done applies to all completed work within the QuickBite platform, including:
+
+- Features
+- Enhancements
+- Bug Fixes
+- Technical Improvements
+- Infrastructure Changes
+- Documentation Updates
+
+---
+
+## 35.3 Completion Principles
+
+A work item shall be considered complete only when it satisfies all agreed engineering, quality, and business expectations.
+
+Completion shall represent production-ready work rather than partially implemented functionality.
+
+---
+
+## 35.4 Functional Completion
+
+Where applicable, completed work shall satisfy:
+
+- Approved functional requirements.
+- Defined acceptance criteria.
+- Expected business behavior.
+- Approved design decisions.
+
+---
+
+## 35.5 Engineering Completion
+
+Completed work shall:
+
+- Follow the Engineering Handbook standards.
+- Comply with architecture principles.
+- Follow coding standards.
+- Follow naming conventions.
+- Maintain repository quality.
+
+Known technical shortcuts shall be documented and approved where necessary.
+
+---
+
+## 35.6 Quality Completion
+
+Completed work should have:
+
+- Appropriate testing completed.
+- Required code reviews approved.
+- Documentation updated where applicable.
+- Identified defects addressed or formally accepted.
+
+---
+
+## 35.7 Operational Readiness
+
+Before completion, work should be evaluated for operational readiness, including:
+
+- Configuration updates.
+- Deployment considerations.
+- Monitoring requirements.
+- Logging requirements.
+- Security considerations.
+
+---
+
+## 35.8 Documentation Completion
+
+Relevant engineering documentation shall be updated to reflect completed work.
+
+Documentation should remain accurate, consistent, and aligned with the implemented solution.
+
+---
+
+## 35.9 Review and Acceptance
+
+Completed work shall receive the required approvals according to the project's engineering governance before being considered finished.
+
+---
+
+## 35.10 Standard Compliance
+
+All completed work within the QuickBite platform shall satisfy the Definition of Done.
+
+Any approved exception shall be documented together with its associated justification, associated risks, and approval record.
+
 ---
 
 # PART V — QUALITY ENGINEERING
