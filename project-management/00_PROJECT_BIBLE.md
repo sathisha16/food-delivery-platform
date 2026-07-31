@@ -717,6 +717,119 @@ Outdated, inconsistent, or obsolete documentation should be corrected as part of
 
 # 14. Architecture Principles
 
+## 14.1 Purpose
+
+The Architecture Principles defined in this handbook establish the fundamental architectural rules that govern the design, implementation, evolution, and maintenance of the QuickBite platform.
+
+These principles provide a consistent architectural direction for all engineering activities and ensure that the platform remains scalable, maintainable, secure, and adaptable throughout its lifecycle.
+
+All High-Level Design (HLD), Low-Level Design (LLD), database design, API design, frontend architecture, backend architecture, and infrastructure decisions shall align with these principles.
+
+---
+
+## 14.2 Architectural Philosophy
+
+QuickBite shall be engineered as a modular, enterprise-grade full-stack application where every architectural decision is driven by business requirements, long-term maintainability, and system scalability rather than short-term implementation convenience.
+
+Architecture should enable continuous evolution while minimizing unnecessary complexity and technical debt.
+
+---
+
+## 14.3 Business-Driven Architecture
+
+Business requirements are the foundation of architectural decisions.
+
+Architecture shall support approved business capabilities and operational goals defined within the Business Requirement Document (BRD) and Software Requirement Specification (SRS).
+
+No architectural decision shall introduce unnecessary complexity without providing measurable business or technical value.
+
+---
+
+## 14.4 Separation of Concerns
+
+Each architectural component shall have a clearly defined responsibility.
+
+Business logic, presentation logic, data access, integration, infrastructure, and cross-cutting concerns shall remain logically separated to improve maintainability, testability, and scalability.
+
+---
+
+## 14.5 Modular Architecture
+
+The QuickBite platform shall be organized into modular components with well-defined boundaries.
+
+Each module shall:
+
+- Have a single primary responsibility.
+- Minimize dependencies on other modules.
+- Expose only necessary interfaces.
+- Support independent evolution without affecting unrelated modules.
+
+---
+
+## 14.6 Loose Coupling and High Cohesion
+
+Components shall communicate through clearly defined contracts while minimizing direct dependencies.
+
+High cohesion within modules and loose coupling between modules shall be preferred to improve flexibility, maintainability, and future extensibility.
+
+---
+
+## 14.7 Scalability by Design
+
+Architecture shall support future growth in:
+
+- Users
+- Restaurants
+- Delivery Partners
+- Orders
+- Notifications
+- Platform Services
+
+Scalability considerations shall be incorporated during architectural design rather than introduced after implementation.
+
+---
+
+## 14.8 Technology Independence
+
+Business rules shall remain independent of specific frameworks, libraries, databases, or infrastructure technologies wherever practical.
+
+This principle enables easier technology upgrades, framework migration, and long-term maintainability.
+
+---
+
+## 14.9 Security by Architecture
+
+Security considerations shall be integrated into architectural design from the beginning.
+
+Architectural decisions shall support:
+
+- Authentication
+- Authorization
+- Secure communication
+- Data protection
+- Secure API design
+- Principle of least privilege
+
+Security shall be considered a core architectural concern rather than an optional enhancement.
+
+---
+
+## 14.10 Evolutionary Architecture
+
+The architecture shall support continuous enhancement while preserving system stability.
+
+New features, modules, and services should integrate into the existing architecture with minimal disruption to previously implemented components.
+
+Architectural evolution should prioritize backward compatibility, maintainability, and controlled change management.
+
+---
+
+## 14.11 Principle Compliance
+
+All architectural artifacts, including High-Level Design (HLD), Low-Level Design (LLD), API Specifications, Database Design, Frontend Architecture, Backend Architecture, and deployment architecture shall comply with the principles defined in this section.
+
+Any deviation shall be documented, technically justified, reviewed, and approved through the Engineering Decision Log before implementation.
+
 # 15. Design Principles
 
 # 16. Application Architecture Standards
