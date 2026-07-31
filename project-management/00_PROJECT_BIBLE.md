@@ -2805,6 +2805,107 @@ Any deviation shall require documented technical justification and approval thro
 
 # 32. Code Review Guidelines
 
+## 32.1 Purpose
+
+The Code Review Guidelines establish the engineering standards for reviewing software changes within the QuickBite platform.
+
+Code reviews improve software quality, maintainability, security, consistency, knowledge sharing, and long-term project sustainability by ensuring that changes are evaluated before integration.
+
+---
+
+## 32.2 Scope
+
+These guidelines apply to all source code, configuration, infrastructure definitions, database changes, documentation updates, and other version-controlled artifacts developed for the QuickBite platform.
+
+---
+
+## 32.3 Review Objectives
+
+Every code review should verify that the proposed changes:
+
+- Meet the intended business requirements.
+- Follow the Engineering Handbook standards.
+- Maintain architectural consistency.
+- Preserve code readability and maintainability.
+- Do not introduce unnecessary complexity.
+- Do not negatively impact security, performance, or reliability.
+
+---
+
+## 32.4 Reviewer Responsibilities
+
+Reviewers shall:
+
+- Evaluate the technical correctness of the implementation.
+- Verify compliance with project standards.
+- Provide constructive and objective feedback.
+- Identify potential defects, risks, and improvement opportunities.
+- Encourage knowledge sharing across the engineering team.
+
+Reviews should focus on improving the software rather than evaluating individuals.
+
+---
+
+## 32.5 Author Responsibilities
+
+Authors shall:
+
+- Submit complete and understandable changes.
+- Ensure appropriate testing has been performed.
+- Provide sufficient context for reviewers.
+- Respond to review feedback professionally.
+- Address agreed review comments before requesting final approval.
+
+---
+
+## 32.6 Review Criteria
+
+Reviewers should evaluate areas including:
+
+- Business Logic
+- Architecture
+- Coding Standards
+- Naming Conventions
+- Error Handling
+- Exception Handling
+- Security
+- Performance
+- Maintainability
+- Test Coverage
+- Documentation
+
+The review should remain proportionate to the size and risk of the proposed change.
+
+---
+
+## 32.7 Review Communication
+
+Code review discussions shall remain respectful, professional, and focused on technical improvement.
+
+Feedback should be clear, actionable, and supported by engineering reasoning where appropriate.
+
+---
+
+## 32.8 Approval Process
+
+Changes shall receive the required review approvals before being merged into protected branches.
+
+The approval process shall comply with the project's repository governance and branch protection policies.
+
+---
+
+## 32.9 Continuous Improvement
+
+Code review practices should evolve based on project experience, engineering feedback, and lessons learned throughout the software development lifecycle.
+
+---
+
+## 32.10 Standard Compliance
+
+All contributors shall comply with these Code Review Guidelines.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 33. Pull Request Standards
 
 # 34. Definition of Ready (DoR)
