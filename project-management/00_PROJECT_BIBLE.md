@@ -3556,6 +3556,125 @@ Any decision to intentionally accept significant technical debt shall be documen
 
 # 39. Refactoring Guidelines
 
+## 39.1 Purpose
+
+The Refactoring Guidelines establish the engineering principles for improving the internal structure, maintainability, readability, and quality of software within the QuickBite platform without altering its externally observable behavior.
+
+These guidelines promote continuous improvement while preserving functional correctness and system reliability.
+
+---
+
+## 39.2 Scope
+
+These guidelines apply to all software components within the QuickBite platform, including:
+
+- Source Code
+- APIs
+- Database Access Layers
+- Business Logic
+- Configuration
+- Test Code
+- Shared Libraries
+- Infrastructure Automation
+
+---
+
+## 39.3 Refactoring Principles
+
+Refactoring shall:
+
+- Preserve existing functional behavior.
+- Improve code readability and maintainability.
+- Reduce unnecessary complexity.
+- Eliminate duplication where appropriate.
+- Support long-term software sustainability.
+
+Refactoring activities shall be planned and executed with appropriate engineering discipline.
+
+---
+
+## 39.4 Refactoring Objectives
+
+Refactoring activities should aim to:
+
+- Improve software design.
+- Simplify implementation.
+- Enhance maintainability.
+- Improve extensibility.
+- Reduce technical debt.
+- Increase code consistency.
+- Improve overall software quality.
+
+---
+
+## 39.5 Risk Management
+
+Potential risks associated with refactoring shall be identified before implementation.
+
+Engineering teams should evaluate:
+
+- Functional impact.
+- Performance implications.
+- Integration risks.
+- Deployment considerations.
+- Regression risks.
+
+Appropriate mitigation measures should be incorporated into the implementation plan.
+
+---
+
+## 39.6 Validation
+
+Refactored software shall be validated before integration.
+
+Validation activities should include appropriate:
+
+- Code Reviews
+- Testing
+- Regression Verification
+- Documentation Updates
+
+The level of validation should be proportionate to the complexity and impact of the refactoring activity.
+
+---
+
+## 39.7 Documentation
+
+Significant refactoring activities shall be documented where appropriate.
+
+Documentation should describe:
+
+- Purpose
+- Scope
+- Expected benefits
+- Major architectural or design improvements
+
+Implementation-specific details shall remain within the relevant technical documentation.
+
+---
+
+## 39.8 Continuous Improvement
+
+Refactoring should be treated as an ongoing engineering practice rather than an isolated maintenance activity.
+
+Engineering teams should continuously identify opportunities to improve software quality while balancing business priorities and delivery commitments.
+
+---
+
+## 39.9 Relationship with Technical Debt
+
+Refactoring activities should support the planned reduction of technical debt identified through the project's Technical Debt Management process.
+
+Refactoring priorities should align with business value, engineering risk, and long-term platform sustainability.
+
+---
+
+## 39.10 Standard Compliance
+
+All refactoring activities performed within the QuickBite platform shall comply with these Refactoring Guidelines.
+
+Any significant deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 ---
 
 # PART VI — OPERATIONS
