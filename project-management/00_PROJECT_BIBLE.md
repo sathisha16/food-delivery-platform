@@ -1904,6 +1904,121 @@ Any deviation shall require documented technical justification and approval thro
 
 # 24. Logging Standards
 
+## 24.1 Purpose
+
+The Logging Standards establish the engineering principles for recording application events, operational activities, and system behavior throughout the QuickBite platform.
+
+These standards ensure that logs support troubleshooting, monitoring, auditing, security investigations, performance analysis, and operational excellence while maintaining consistency across all platform components.
+
+---
+
+## 24.2 Scope
+
+These standards apply to all software components within the QuickBite platform, including:
+
+- Backend Services
+- Frontend Applications
+- APIs
+- Database Operations
+- Background Jobs
+- External Integrations
+- Infrastructure Components
+
+---
+
+## 24.3 Logging Principles
+
+Logging shall:
+
+- Provide meaningful operational information.
+- Support rapid issue diagnosis.
+- Maintain consistency across applications.
+- Protect sensitive information.
+- Minimize unnecessary log noise.
+
+Logs shall provide value for both development and production environments.
+
+---
+
+## 24.4 Log Levels
+
+Applications shall use standardized log levels appropriate to the significance of each event.
+
+Typical log levels include:
+
+- TRACE
+- DEBUG
+- INFO
+- WARN
+- ERROR
+
+Engineering teams shall use log levels consistently throughout the platform.
+
+---
+
+## 24.5 Log Content
+
+Log entries should provide sufficient context to support troubleshooting.
+
+Where applicable, logs may include:
+
+- Timestamp
+- Service Name
+- Request Identifier
+- Operation Name
+- Business Context
+- Error Information
+
+Sensitive information shall not be recorded in application logs.
+
+---
+
+## 24.6 Security and Privacy
+
+Logging shall comply with the platform's security and privacy requirements.
+
+Applications shall avoid logging:
+
+- Passwords
+- Authentication Tokens
+- Payment Information
+- Personally Identifiable Information (PII)
+- Other confidential business data unless explicitly required and protected.
+
+---
+
+## 24.7 Structured Logging
+
+Applications should generate structured logs whenever practical.
+
+Consistent log formats improve monitoring, automated analysis, centralized log management, and operational reporting.
+
+---
+
+## 24.8 Audit Logging
+
+Business-critical operations should generate audit logs where appropriate.
+
+Audit logs shall support traceability, compliance requirements, operational investigations, and business accountability.
+
+Audit logging requirements shall be defined within the relevant functional or technical design documentation.
+
+---
+
+## 24.9 Monitoring Integration
+
+Logging shall support integration with monitoring and observability solutions.
+
+Engineering teams should be able to identify operational issues, investigate failures, and analyze platform behavior using standardized logging practices.
+
+---
+
+## 24.10 Standard Compliance
+
+All software components developed for the QuickBite platform shall comply with these Logging Standards.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 25. Configuration Management
 
 # 26. Dependency Management
