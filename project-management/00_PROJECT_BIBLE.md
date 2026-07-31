@@ -3448,6 +3448,112 @@ Any deviation shall require documented technical justification and approval thro
 
 # 38. Technical Debt Management
 
+## 38.1 Purpose
+
+The Technical Debt Management Standards establish the engineering principles for identifying, documenting, evaluating, prioritizing, and managing technical debt within the QuickBite platform.
+
+These standards ensure that short-term engineering decisions are appropriately balanced against the platform's long-term maintainability, scalability, reliability, and overall software quality.
+
+---
+
+## 38.2 Scope
+
+These standards apply to all forms of technical debt that may arise throughout the QuickBite platform, including:
+
+- Source Code
+- Architecture
+- Database Design
+- APIs
+- Infrastructure
+- Configuration
+- Testing
+- Documentation
+- Build and Deployment Processes
+
+---
+
+## 38.3 Technical Debt Principles
+
+Technical debt shall be recognized as a managed engineering responsibility rather than an unavoidable consequence of software development.
+
+Engineering teams should make informed decisions when accepting technical debt and continuously evaluate opportunities to reduce its long-term impact.
+
+---
+
+## 38.4 Identification
+
+Technical debt should be identified throughout the software development lifecycle.
+
+Sources of technical debt may include:
+
+- Design compromises
+- Temporary implementations
+- Legacy components
+- Incomplete automation
+- Outdated dependencies
+- Deferred improvements
+
+Engineering teams should identify technical debt as early as practical.
+
+---
+
+## 38.5 Documentation
+
+Identified technical debt shall be documented using the project's approved engineering documentation process.
+
+Documentation should include:
+
+- Description
+- Business or technical rationale
+- Potential impact
+- Associated risks
+- Recommended resolution
+
+---
+
+## 38.6 Prioritization
+
+Technical debt should be evaluated according to:
+
+- Business impact
+- Engineering risk
+- Security implications
+- Performance impact
+- Maintainability
+- Development productivity
+
+Prioritization should balance business delivery objectives with long-term platform sustainability.
+
+---
+
+## 38.7 Resolution
+
+Technical debt should be addressed through planned engineering activities whenever practical.
+
+Resolution activities should minimize operational risk while improving software quality and reducing future maintenance effort.
+
+---
+
+## 38.8 Continuous Monitoring
+
+Engineering teams should periodically review technical debt to ensure that previously accepted compromises remain appropriate.
+
+Technical debt should not accumulate without regular assessment and management.
+
+---
+
+## 38.9 Continuous Improvement
+
+Lessons learned from technical debt should contribute to improvements in engineering practices, architecture decisions, development processes, and project governance.
+
+---
+
+## 38.10 Standard Compliance
+
+All contributors shall comply with these Technical Debt Management Standards.
+
+Any decision to intentionally accept significant technical debt shall be documented, justified, and approved through the Engineering Decision Log before implementation.
+
 # 39. Refactoring Guidelines
 
 ---
