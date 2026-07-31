@@ -1801,6 +1801,107 @@ Any deviation shall require documented technical justification and approval thro
 
 # 23. Exception Handling Standards
 
+## 23.1 Purpose
+
+The Exception Handling Standards establish the engineering rules for identifying, propagating, handling, and documenting exceptions within the QuickBite platform.
+
+These standards promote consistent application behavior, improve maintainability, simplify debugging, and support reliable business operations.
+
+---
+
+## 23.2 Scope
+
+These standards apply to all application components that generate, propagate, or handle exceptions, including:
+
+- Backend Services
+- APIs
+- Database Operations
+- External Integrations
+- Background Processes
+- Scheduled Jobs
+
+---
+
+## 23.3 Exception Handling Principles
+
+Exceptions shall:
+
+- Represent exceptional conditions only.
+- Be handled at the appropriate architectural layer.
+- Preserve meaningful diagnostic information.
+- Avoid unnecessary complexity.
+- Support consistent application behavior.
+
+Exceptions shall never be ignored silently.
+
+---
+
+## 23.4 Exception Classification
+
+Exceptions should be classified according to their business and technical purpose.
+
+Examples include:
+
+- Business Exceptions
+- Validation Exceptions
+- Authentication Exceptions
+- Authorization Exceptions
+- Integration Exceptions
+- Infrastructure Exceptions
+- Unexpected System Exceptions
+
+The classification should remain consistent across the platform.
+
+---
+
+## 23.5 Custom Exceptions
+
+Business-specific scenarios should use well-defined custom exceptions where appropriate.
+
+Custom exceptions shall clearly communicate the business condition that caused the exception and support consistent handling throughout the application.
+
+---
+
+## 23.6 Exception Propagation
+
+Exceptions should propagate only to the layer responsible for handling them.
+
+Lower application layers shall avoid making presentation-specific decisions.
+
+Each architectural layer should maintain clear responsibilities when propagating exceptions.
+
+---
+
+## 23.7 Exception Translation
+
+Technical exceptions may be translated into business-appropriate exceptions when crossing architectural boundaries.
+
+Exception translation should preserve the original cause whenever practical to support troubleshooting.
+
+---
+
+## 23.8 Logging
+
+Exceptions shall be logged in accordance with the Logging Standards defined within this handbook.
+
+Logging should capture sufficient information to support investigation while protecting sensitive business and customer data.
+
+---
+
+## 23.9 Documentation
+
+Exception handling behavior for significant business operations shall be documented within the relevant technical design documentation.
+
+Implementation-specific exception hierarchies shall remain outside this handbook.
+
+---
+
+## 23.10 Standard Compliance
+
+All application components developed for the QuickBite platform shall comply with these Exception Handling Standards.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 24. Logging Standards
 
 # 25. Configuration Management
