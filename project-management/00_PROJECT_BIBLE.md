@@ -832,6 +832,100 @@ Any deviation shall be documented, technically justified, reviewed, and approved
 
 # 15. Design Principles
 
+## 15.1 Purpose
+
+The Design Principles defined in this handbook establish the fundamental engineering practices for designing software components within the QuickBite platform.
+
+These principles promote consistency, maintainability, scalability, readability, and long-term adaptability across the entire full-stack application.
+
+All software designs shall align with these principles before implementation begins.
+
+---
+
+## 15.2 Simplicity
+
+Software designs should remain as simple as possible while satisfying approved business and technical requirements.
+
+Complex solutions shall only be introduced when they provide clear and measurable long-term value.
+
+---
+
+## 15.3 Single Responsibility
+
+Each software component should have one clearly defined responsibility.
+
+A change in one business capability should ideally affect only the component responsible for that capability.
+
+---
+
+## 15.4 Separation of Concerns
+
+Business logic, presentation logic, persistence, integration, configuration, and infrastructure concerns should remain clearly separated.
+
+Each layer should focus only on its intended responsibility.
+
+---
+
+## 15.5 Reusability
+
+Reusable designs should be preferred whenever they improve consistency and reduce duplication.
+
+However, premature abstraction should be avoided until a genuine reuse opportunity exists.
+
+---
+
+## 15.6 Extensibility
+
+Software designs should support future enhancements with minimal modification to existing components.
+
+Whenever practical, new functionality should be introduced through extension rather than modification.
+
+---
+
+## 15.7 Consistency
+
+Design patterns, naming conventions, APIs, user interactions, and engineering approaches should remain consistent throughout the QuickBite platform.
+
+Consistency improves maintainability, developer productivity, and user experience.
+
+---
+
+## 15.8 Testability
+
+Software components should be designed to support efficient unit testing, integration testing, and system testing.
+
+Dependencies should remain manageable to simplify automated testing.
+
+---
+
+## 15.9 Maintainability
+
+Design decisions should prioritize long-term maintainability over short-term implementation convenience.
+
+Future engineers should be able to understand, modify, and extend the system with minimal effort.
+
+---
+
+## 15.10 Design Validation
+
+Major software designs should be reviewed for:
+
+- Alignment with business requirements
+- Compliance with architecture principles
+- Simplicity
+- Scalability
+- Security
+- Maintainability
+- Testability
+
+Design reviews should occur before implementation begins.
+
+---
+
+## 15.11 Principle Compliance
+
+All detailed software designs produced during the project lifecycle shall comply with these design principles unless an approved engineering decision explicitly documents and justifies an exception.
+
 # 16. Application Architecture Standards
 
 # 17. API Design Standards
