@@ -1037,6 +1037,116 @@ Any exception shall be formally reviewed, documented, justified, and approved be
 
 # 17. API Design Standards
 
+## 17.1 Purpose
+
+The API Design Standards establish the engineering standards for designing, implementing, documenting, and maintaining Application Programming Interfaces (APIs) within the QuickBite platform.
+
+These standards promote consistency, interoperability, maintainability, security, and long-term scalability across all internal and external APIs.
+
+---
+
+## 17.2 Scope
+
+These standards apply to every API developed as part of the QuickBite platform, including:
+
+- Customer APIs
+- Restaurant APIs
+- Delivery Partner APIs
+- Administration APIs
+- Internal Service APIs
+- Future Integration APIs
+
+---
+
+## 17.3 Consistency
+
+Every API shall follow a consistent design approach throughout the platform.
+
+Consistency shall be maintained in:
+
+- Resource naming
+- URI structure
+- Request formats
+- Response formats
+- Error responses
+- HTTP status codes
+- Versioning strategy
+
+---
+
+## 17.4 Resource-Oriented Design
+
+APIs should be designed around business resources rather than implementation details.
+
+Endpoints shall represent business capabilities in a clear, predictable, and intuitive manner.
+
+---
+
+## 17.5 Standardized Communication
+
+All APIs shall exchange data using standardized formats and well-defined contracts.
+
+API behavior shall remain predictable and fully documented to simplify integration between platform components.
+
+---
+
+## 17.6 API Versioning
+
+Changes affecting API compatibility shall be managed through an approved versioning strategy.
+
+Backward compatibility should be maintained whenever practical to minimize disruption to dependent applications.
+
+---
+
+## 17.7 Error Handling
+
+API failures shall return structured and meaningful error responses.
+
+Error information should enable consumers to identify, understand, and resolve issues without exposing sensitive implementation details.
+
+---
+
+## 17.8 Security
+
+Every API shall comply with the platform security standards.
+
+Security considerations include:
+
+- Authentication
+- Authorization
+- Input Validation
+- Secure Communication
+- Data Protection
+- Access Control
+
+Security requirements shall be incorporated into API design rather than introduced after implementation.
+
+---
+
+## 17.9 Documentation
+
+Every API shall be documented before implementation.
+
+API documentation should clearly define:
+
+- Purpose
+- Request Structure
+- Response Structure
+- Validation Rules
+- Error Responses
+- Security Requirements
+- Version Information
+
+Detailed API specifications shall be maintained separately from this handbook.
+
+---
+
+## 17.10 Standard Compliance
+
+Every API developed within the QuickBite platform shall comply with the standards defined in this section.
+
+Any exception shall require technical review, documented justification, and approval through the Engineering Decision Log before implementation.
+
 # 18. Database Design Standards
 
 # 19. Integration Standards
