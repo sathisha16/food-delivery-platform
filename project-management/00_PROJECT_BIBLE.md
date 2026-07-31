@@ -2541,6 +2541,132 @@ Any deviation shall require documented technical justification and approval thro
 
 # 30. Branching Strategy
 
+## 30.1 Purpose
+
+The Branching Strategy defines the standard Git branching model for the QuickBite platform.
+
+Its purpose is to enable parallel development, maintain code stability, support controlled releases, simplify collaboration, and ensure a consistent software delivery process throughout the project lifecycle.
+
+---
+
+## 30.2 Scope
+
+These standards apply to all repositories maintained as part of the QuickBite platform.
+
+Every contributor shall follow the approved branching strategy for feature development, bug fixes, releases, and production maintenance.
+
+---
+
+## 30.3 Branching Principles
+
+The branching strategy shall:
+
+- Protect production stability.
+- Support collaborative development.
+- Minimize merge conflicts.
+- Enable parallel feature development.
+- Provide clear traceability of software changes.
+- Support predictable release management.
+
+---
+
+## 30.4 Primary Branches
+
+The QuickBite project shall maintain the following primary branches:
+
+- **main** — Production-ready source code.
+- **develop** — Integration branch for ongoing development.
+
+The **main** branch shall always represent stable and releasable software.
+
+The **develop** branch shall serve as the primary integration branch for approved development work.
+
+---
+
+## 30.5 Supporting Branches
+
+Supporting branches shall be created from the appropriate parent branch based on their purpose.
+
+Standard branch categories include:
+
+- feature/*
+- bugfix/*
+- hotfix/*
+- release/*
+- chore/*
+- docs/*
+- refactor/*
+- test/*
+
+---
+
+## 30.6 Branch Naming Convention
+
+Branch names shall:
+
+- Use lowercase letters.
+- Use hyphens where appropriate.
+- Clearly describe the purpose of the work.
+- Avoid ambiguous abbreviations.
+
+Examples:
+
+```
+feature/customer-registration
+
+feature/order-tracking
+
+bugfix/payment-timeout
+
+hotfix/login-error
+
+release/v1.0.0
+
+docs/project-bible
+
+refactor/order-service
+
+test/payment-module
+```
+
+---
+
+## 30.7 Merge Strategy
+
+Branches shall be merged only after:
+
+- Development completion.
+- Successful validation.
+- Required reviews.
+- Resolution of identified issues.
+- Compliance with project engineering standards.
+
+Direct merges into protected branches should follow the project's repository governance policies.
+
+---
+
+## 30.8 Branch Lifecycle
+
+Branches should remain short-lived whenever practical.
+
+Completed branches should be merged and removed after successful integration to maintain repository cleanliness and reduce long-term maintenance overhead.
+
+---
+
+## 30.9 Documentation
+
+Branching practices and repository workflows shall remain consistent with the Version Control Standards defined within this handbook.
+
+Project-specific workflow examples may be maintained separately within engineering documentation.
+
+---
+
+## 30.10 Standard Compliance
+
+All project contributors shall comply with the QuickBite Branching Strategy.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before implementation.
+
 # 31. Commit Message Convention
 
 # 32. Code Review Guidelines
