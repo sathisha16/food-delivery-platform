@@ -1459,6 +1459,250 @@ Project-specific implementation guidelines for individual programming languages 
 
 # 21. Naming Conventions
 
+## 21.1 Purpose
+
+The Naming Conventions establish standardized naming rules for all software artifacts developed within the QuickBite platform.
+
+Consistent naming improves readability, maintainability, collaboration, traceability, and long-term project sustainability by ensuring that all engineering teams follow a common naming standard.
+
+---
+
+## 21.2 Scope
+
+These conventions apply to all project artifacts, including:
+
+- Source Code
+- Packages
+- Classes
+- Interfaces
+- Methods
+- Variables
+- APIs
+- Database Objects
+- Configuration Files
+- Infrastructure Resources
+- Documentation
+- Version Control
+
+---
+
+## 21.3 General Principles
+
+All names shall:
+
+- Clearly describe their purpose.
+- Be meaningful and self-explanatory.
+- Follow a consistent naming style.
+- Avoid abbreviations unless they are widely accepted.
+- Avoid ambiguous or misleading terminology.
+- Remain concise while preserving clarity.
+
+---
+
+## 21.4 Package Naming
+
+Java packages shall:
+
+- Use lowercase letters only.
+- Follow reverse-domain style where applicable.
+- Organize code by business capability rather than technical layers whenever practical.
+
+Example:
+
+```
+com.quickbite.customer
+com.quickbite.order
+com.quickbite.restaurant
+com.quickbite.payment
+com.quickbite.delivery
+```
+
+---
+
+## 21.5 Class Naming
+
+Class names shall:
+
+- Use PascalCase.
+- Represent a single business responsibility.
+- Use meaningful nouns.
+
+Examples:
+
+- CustomerController
+- OrderService
+- RestaurantRepository
+- PaymentGateway
+- DeliveryAssignmentService
+
+---
+
+## 21.6 Interface Naming
+
+Interfaces shall:
+
+- Use PascalCase.
+- Represent business capabilities rather than implementation details.
+- Avoid unnecessary prefixes or suffixes unless required by project standards.
+
+Examples:
+
+- PaymentService
+- NotificationProvider
+- DiscountCalculator
+
+---
+
+## 21.7 Method Naming
+
+Method names shall:
+
+- Use camelCase.
+- Begin with an appropriate verb.
+- Clearly describe the business operation.
+
+Examples:
+
+- createOrder()
+- assignDeliveryPartner()
+- calculateDeliveryFee()
+- cancelOrder()
+- verifyPayment()
+
+---
+
+## 21.8 Variable Naming
+
+Variables shall:
+
+- Use camelCase.
+- Clearly describe the stored value.
+- Avoid single-letter names except for short-lived loop variables.
+
+Examples:
+
+- customerId
+- orderStatus
+- totalAmount
+- estimatedDeliveryTime
+
+---
+
+## 21.9 API Naming
+
+REST API endpoints shall:
+
+- Use lowercase letters.
+- Use plural resource names.
+- Use nouns instead of verbs.
+- Maintain consistent URI structures.
+
+Examples:
+
+```
+/api/v1/customers
+/api/v1/orders
+/api/v1/restaurants
+/api/v1/payments
+```
+
+---
+
+## 21.10 Database Naming
+
+Database objects shall follow consistent naming conventions.
+
+Examples:
+
+Tables
+
+- customers
+- orders
+- restaurants
+- order_items
+
+Columns
+
+- customer_id
+- created_at
+- updated_at
+- delivery_status
+
+Primary Keys
+
+- id
+
+Foreign Keys
+
+- customer_id
+- restaurant_id
+- order_id
+
+---
+
+## 21.11 Configuration Naming
+
+Configuration files shall use descriptive and standardized names.
+
+Examples:
+
+- application.yml
+- application-dev.yml
+- application-prod.yml
+- docker-compose.yml
+
+Environment variables shall use uppercase letters with underscores.
+
+Examples:
+
+```
+DB_HOST
+DB_PORT
+JWT_SECRET
+REDIS_HOST
+SPRING_PROFILES_ACTIVE
+```
+
+---
+
+## 21.12 Git Naming
+
+Git branches shall follow a standardized naming convention.
+
+Examples:
+
+```
+feature/customer-registration
+feature/order-management
+bugfix/payment-timeout
+hotfix/login-issue
+release/v1.0.0
+```
+
+Commit messages shall follow the project commit convention defined within this handbook.
+
+---
+
+## 21.13 Documentation Naming
+
+Project documentation shall use descriptive and consistent file names.
+
+Examples:
+
+- SOFTWARE_REQUIREMENT_SPECIFICATION.md
+- HIGH_LEVEL_DESIGN.md
+- LOW_LEVEL_DESIGN.md
+- API_SPECIFICATION.md
+- ENGINEERING_DECISION_LOG.md
+
+---
+
+## 21.14 Standard Compliance
+
+All project artifacts developed for the QuickBite platform shall comply with the naming conventions defined in this handbook.
+
+Any deviation shall require documented technical justification and approval through the Engineering Decision Log before adoption.
+
 # 22. Error Handling Standards
 
 # 23. Exception Handling Standards
