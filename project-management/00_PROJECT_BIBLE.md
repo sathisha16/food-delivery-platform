@@ -522,3 +522,96 @@ The Engineering Handbook governs **how** the QuickBite system is engineered.
 The Business Requirement Document (BRD) governs **what** the business expects.
 
 Together, these documents ensure that every engineering activity contributes to delivering a scalable, secure, maintainable, and enterprise-grade full-stack software platform while remaining aligned with the approved business vision.
+
+---
+
+# 12. Engineering Principles
+
+## 12.1 Purpose
+
+The Engineering Principles defined in this handbook establish the fundamental standards that govern the design, development, testing, deployment, and maintenance of the QuickBite platform.
+
+These principles provide a consistent engineering direction for every phase of the project and shall be followed across all application modules and engineering teams.
+
+---
+
+## 12.2 Documentation-First Development
+
+QuickBite follows a documentation-first development methodology.
+
+Every significant engineering activity shall begin with appropriate documentation before implementation.
+
+Examples include:
+
+- Business Requirement Document (BRD)
+- Software Requirement Specification (SRS)
+- High-Level Design (HLD)
+- Low-Level Design (LLD)
+- Database Design
+- API Specifications
+
+Implementation shall begin only after the required engineering documentation has been reviewed and approved.
+
+---
+
+## 12.3 Business-Driven Engineering
+
+Business requirements are the foundation of every engineering decision.
+
+Technical solutions shall always support approved business objectives rather than introducing unnecessary complexity or features outside the defined project scope.
+
+---
+
+## 12.4 Modular Design
+
+The QuickBite platform shall be designed as a collection of modular and well-defined components.
+
+Each module should have clear responsibilities, minimal coupling, and well-defined interfaces to improve maintainability, scalability, and future extensibility.
+
+---
+
+## 12.5 Scalability by Design
+
+System components shall be designed with future growth in mind.
+
+Architectural decisions should support increasing numbers of users, restaurants, delivery partners, and platform services without requiring major redesign.
+
+---
+
+## 12.6 Security by Design
+
+Security shall be incorporated during design and implementation rather than treated as a post-development activity.
+
+Authentication, authorization, secure communication, input validation, and sensitive data protection shall be considered throughout the software development lifecycle.
+
+---
+
+## 12.7 Maintainability
+
+Engineering decisions shall prioritize long-term maintainability.
+
+Code, documentation, APIs, and database structures should remain understandable, consistent, and easy to modify as the platform evolves.
+
+---
+
+## 12.8 Traceability
+
+Every software requirement should be traceable back to an approved business requirement.
+
+Similarly, implementation, testing, and deployment activities should be traceable to the corresponding software requirements wherever applicable.
+
+---
+
+## 12.9 Continuous Improvement
+
+Engineering practices, documentation standards, and development processes shall be periodically reviewed and improved based on project evolution, lessons learned, and architectural requirements.
+
+Changes shall be documented through the Engineering Decision Log whenever they affect project-wide standards.
+
+---
+
+## 12.10 Principle Compliance
+
+All engineering contributors shall follow the principles defined in this handbook.
+
+Any intentional deviation from these principles shall be reviewed, justified, documented, and approved before implementation.
