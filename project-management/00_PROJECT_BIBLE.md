@@ -420,3 +420,105 @@ Quality is treated as a continuous engineering responsibility rather than a fina
 Beyond building a functional application, QuickBite seeks to become a complete reference project that demonstrates enterprise software engineering from initial business analysis to production-ready implementation.
 
 The project should serve as a long-term portfolio showcasing professional documentation, architecture, development practices, testing strategy, deployment planning, and engineering governance.
+
+---
+
+# 11. Business Objectives Alignment
+
+## 11.1 Purpose
+
+The business objectives of the QuickBite project are formally defined and maintained within the Business Requirement Document (BRD).
+
+This Engineering Handbook does not duplicate those objectives. Instead, it establishes the engineering governance required to ensure that every engineering activity across the full-stack application remains aligned with the approved business objectives throughout the Software Development Life Cycle (SDLC).
+
+---
+
+## 11.2 Alignment Principle
+
+Every engineering decision made within the QuickBite project shall directly support the business objectives defined in the BRD.
+
+This alignment applies to all engineering disciplines, including:
+
+- Application Architecture
+- Backend Engineering
+- Frontend Engineering
+- Database Design
+- API Design
+- Security Engineering
+- Testing and Quality Assurance
+- DevOps and Deployment
+- Monitoring and Maintenance
+
+Engineering activities shall never contradict approved business requirements without a formally approved change request.
+
+---
+
+## 11.3 Single Source of Truth
+
+The Business Requirement Document (BRD) is the authoritative source for:
+
+- Business Vision
+- Business Objectives
+- Business Scope
+- Stakeholder Expectations
+- Business Rules
+- Functional Goals
+
+This Engineering Handbook shall not duplicate or redefine business objectives. Instead, it provides the engineering standards, governance, and implementation principles required to successfully achieve those objectives.
+
+If any inconsistency exists between this handbook and the BRD regarding business intent, the BRD shall take precedence until both documents are formally reviewed and updated.
+
+---
+
+## 11.4 Engineering Responsibility
+
+The Engineering Handbook ensures that the approved business objectives are consistently translated into engineering deliverables throughout the project lifecycle.
+
+This responsibility includes governing:
+
+- Requirement Engineering
+- Software Requirement Specification (SRS)
+- High-Level Design (HLD)
+- Low-Level Design (LLD)
+- Application Architecture
+- Backend Development
+- Frontend Development
+- Database Design
+- API Specifications
+- Security Standards
+- Coding Standards
+- Testing Strategy
+- Deployment Strategy
+- Operational Readiness
+- Long-Term Maintenance
+
+---
+
+## 11.5 Change Management
+
+Any approved modification to the business objectives documented in the BRD shall initiate an engineering impact assessment.
+
+The assessment shall determine the required updates to all affected engineering artifacts, including but not limited to:
+
+- Software Requirement Specification (SRS)
+- High-Level Design (HLD)
+- Low-Level Design (LLD)
+- Database Design
+- API Specifications
+- Frontend Design
+- Backend Design
+- Test Artifacts
+- Engineering Decision Log
+- Project Roadmap
+
+This controlled process ensures complete traceability from business requirements to implementation across the entire full-stack application.
+
+---
+
+## 11.6 Engineering Governance Principle
+
+The Engineering Handbook governs **how** the QuickBite system is engineered.
+
+The Business Requirement Document (BRD) governs **what** the business expects.
+
+Together, these documents ensure that every engineering activity contributes to delivering a scalable, secure, maintainable, and enterprise-grade full-stack software platform while remaining aligned with the approved business vision.
