@@ -5,11 +5,11 @@
 | Document ID | PM-004 |
 | Document Name | Change Log |
 | Project | QuickBite – Food Delivery Platform |
-| Document Version | 1.0 |
+| Document Version | 1.1 |
 | Document Status | Active |
 | Document Owner | Project Maintainer |
 | Created On | 2026-07-31 |
-| Last Updated | 2026-07-31 |
+| Last Updated | 2026-08-01 |
 
 ---
 
@@ -142,7 +142,7 @@ All project changes shall be classified using the following categories.
 
 ---
 
-## v0.4.0 — Requirement Engineering
+## v0.4.0 — Requirement Engineering Foundation
 
 **Status:** Released
 
@@ -159,22 +159,22 @@ All project changes shall be classified using the following categories.
 
 ---
 
-## v0.5.0 — Functional Specification Expansion
+## v0.5.0 — Functional Modules (Phase I)
 
 **Status:** Released
 
 ### Added
 
 - Customer Module
-- Authentication Features
-- Menu Browsing & Discovery
-- Shopping Cart
-- Checkout Workflow
+- Restaurant Discovery Module
+- Menu Module
+- Shopping Cart Module
+- Checkout Module
 - Payment Module
-- Order Management
-- Delivery Management
-- Customer Support
-- Review & Rating
+- Order Management Module
+- Delivery Management Module
+- Customer Support Module
+- Review & Rating Module
 
 ### Improved
 
@@ -205,15 +205,17 @@ All project changes shall be classified using the following categories.
 
 ## v0.7.0 — Project Management Foundation
 
-**Status:** In Progress
+**Status:** Released
 
 ### Added
 
+- Project Bible
 - Project Continuity Log
 - Engineering Decision Log
 - Project Roadmap
 - Change Log
-- Project Governance Framework
+- Risk Register
+- Requirement Traceability Matrix (RTM)
 
 ### Documentation
 
@@ -221,26 +223,61 @@ All project changes shall be classified using the following categories.
 
 ---
 
-## v0.8.0 — Requirement Traceability
+## v0.8.0 — Functional Requirements Baseline
 
-**Status:** Planned
+**Status:** Released
 
-### Planned
+### Added
 
-- Requirement Traceability Matrix (RTM)
-- Requirement verification
-- Business-to-functional traceability
+- Notification Module
+- Delivery Partner Module
+- Administrator Module
+- Platform Services Module
+- Remaining enterprise functional capabilities for the QuickBite platform
+
+### Completed
+
+- Completed all Functional Requirement modules (3.01–3.14)
+- Enterprise Functional Requirements baseline
+- Complete functional coverage for the QuickBite platform
+
+### Improved
+
+- Cross-module consistency
+- Requirement standardization
+- Documentation quality
+- Functional dependency alignment
+
+### Documentation
+
+- Functional Requirements section of the Software Requirements Specification (SRS) completed.
+- Requirement Engineering entered the final Software Requirements Specification (SRS) completion phase.
 
 ---
 
-## v0.9.0 — Architecture Design
+## v0.9.0 — Software Requirements Specification Completion
 
 **Status:** Planned
 
 ### Planned
 
-- High-Level Design
-- Low-Level Design
+- Non-Functional Requirements
+- External Interface Requirements
+- Other Requirements
+- Appendix
+- Requirement Verification
+- Final SRS Review
+
+---
+
+## v1.0.0 — Architecture Design
+
+**Status:** Planned
+
+### Planned
+
+- High-Level Design (HLD)
+- Low-Level Design (LLD)
 - Database Design
 - API Specifications
 - Security Architecture
@@ -248,30 +285,48 @@ All project changes shall be classified using the following categories.
 
 ---
 
-## v1.0.0 — Version 1 Production Baseline
+## v2.0.0 — Development Baseline
 
 **Status:** Planned
 
 ### Planned
 
-- Development baseline completed.
-- Testing completed.
-- Deployment readiness achieved.
-- Version 1 production documentation completed.
+- Backend Development
+- Frontend Development
+- Unit Testing
+- Integration Testing
+- System Testing
+- CI/CD Pipeline
 
 ---
 
-## v2.0.0 — Platform Evolution
+## v3.0.0 — Production Release (Version 1)
+
+**Status:** Planned
+
+### Planned
+
+- Production Deployment
+- Production Documentation
+- Monitoring
+- Logging
+- Deployment Validation
+- Version 1 Release
+
+---
+
+## v4.0.0 — Platform Evolution
 
 **Status:** Future
 
 ### Planned
 
-- Product enhancements
-- Advanced analytics
-- Platform optimization
-- Scalability improvements
-- Enterprise integrations
+- Product Enhancements
+- Advanced Analytics
+- AI-Powered Features
+- Platform Optimization
+- Scalability Improvements
+- Enterprise Integrations
 
 ---
 

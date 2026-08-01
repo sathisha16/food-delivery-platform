@@ -31,8 +31,8 @@ This document shall be updated whenever a significant project milestone is compl
 |------|-------|
 | Project Status | Active |
 | SDLC Phase | Requirement Engineering |
-| Current Milestone | Project Management Documentation |
-| Current Activity | Finalizing Project Management documents |
+| Current Milestone | Functional Requirements Completed |
+| Current Activity | Preparing Non-Functional Requirements (SRS Section 04) |
 | Repository Status | Active Development |
 
 ---
@@ -43,10 +43,10 @@ This document shall be updated whenever a significant project milestone is compl
 |-------------|--------|----------|
 | Product Discovery | Completed | 100% |
 | Business Requirements Document (BRD) | Completed | 100% |
-| Software Requirements Specification (SRS) | In Progress | 10 / 15 Modules |
+| Software Requirements Specification (SRS) | In Progress | Functional Requirements Completed (14/14 Modules) |
 | Engineering Handbook | Completed | 100% |
-| Project Management Documentation | In Progress | Baseline Creation |
-| Requirement Traceability Matrix | Pending | 0% |
+| Project Management Documentation | Completed | 100% |
+| Requirement Traceability Matrix | In Progress | Baseline Created |
 | High-Level Design (HLD) | Pending | 0% |
 | Low-Level Design (LLD) | Pending | 0% |
 | Implementation | Pending | 0% |
@@ -57,9 +57,9 @@ This document shall be updated whenever a significant project milestone is compl
 
 # 4. Current Development Focus
 
-The current focus of the project is to establish the Project Management documentation baseline.
+The current focus of the project is to complete the remaining Software Requirement Specification (SRS) documentation, beginning with Non-Functional Requirements (Section 04).
 
-Once completed, development will resume with the remaining Software Requirements Specification (SRS) modules.
+All fourteen Functional Requirement modules have been completed and established as the functional baseline for the platform.
 
 ---
 
@@ -67,13 +67,13 @@ Once completed, development will resume with the remaining Software Requirements
 
 The next planned activities are:
 
-1. Complete Project Management documentation.
-2. Complete the remaining five SRS modules.
-3. Finalize the Software Requirements Specification (SRS).
-4. Complete the Requirement Traceability Matrix (RTM).
-5. Prepare the High-Level Design (HLD).
-6. Prepare the Low-Level Design (LLD).
-7. Begin application implementation.
+1. Complete SRS Section 04 – Non-Functional Requirements.
+2. Complete SRS Section 05 – External Interface Requirements.
+3. Complete SRS Section 06 – Other Requirements.
+4. Complete SRS Section 07 – Appendix.
+5. Finalize the Software Requirements Specification (SRS).
+6. Update the Requirement Traceability Matrix (RTM).
+7. Begin High-Level Design (HLD).
 
 ---
 
@@ -98,6 +98,7 @@ The next planned activities are:
 | M-011 | 2026-07-29 | Requirement Engineering | Delivery Management, Customer Support and Review & Rating modules completed. Total completed SRS modules: 10 of 15. |
 | M-012 | 2026-07-31 | Engineering Governance | Engineering Handbook Version 1.0 completed and released. |
 | M-013 | 2026-07-31 | Project Management | Project Management documentation baseline initiated. |
+| M-014 | 2026-08-01 | Requirement Engineering | Completed all fourteen Functional Requirement modules (3.01–3.14), including Administrator Module and Platform Services Module. Functional requirements baseline established for QuickBite. |
 
 ---
 

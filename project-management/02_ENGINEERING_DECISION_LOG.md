@@ -42,6 +42,7 @@ Only decisions that have a long-term impact on the project shall be recorded.
 | ED-013 | Release Management | Major engineering milestones shall be identified using Git tags. | Establishes immutable project baselines for releases, engineering reviews and future maintenance. | Approved | Project Maintainer | 2026-07-31 |
 | ED-014 | Project Governance | Project Management documentation shall be maintained throughout the Software Development Life Cycle (SDLC). | Ensures project continuity, planning, risk management, decision tracking and engineering governance throughout the project lifecycle. | Approved | Project Maintainer | 2026-07-31 |
 | ED-015 | Traceability | Requirement Traceability shall be maintained from business requirements through implementation. | Every implemented feature shall be traceable to an approved business requirement to support validation, testing and change management. | Approved | Project Maintainer | 2026-07-31 |
+| ED-016 | Requirement Engineering | All functional requirements shall be completed before drafting Non-Functional Requirements (NFR), architecture, and implementation artifacts. | Establishes a stable functional baseline that enables consistent NFR definition, architecture design, API specification, database design, and implementation planning while minimizing downstream rework. | Approved | Project Maintainer | 2026-08-01 |
 
 ---
 
