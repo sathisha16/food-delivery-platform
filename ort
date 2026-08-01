@@ -1,0 +1,86 @@
+[33me981296[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m docs(srs): complete functional requirements baseline and update project documentation
+[33m8db8e26[m docs(brd): complete Platform Services Module (3.14) with enterprise functional specifications
+[33mf80bc38[m docs(admin): complete Administrator Module functional requirements
+[33m6374c5c[m docs(srs): complete delivery partner module
+[33ma5d1b26[m docs(srs): complete notification module
+[33m7772b44[m docs(pm): add continuity log, roadmap, changelog, risk register and RTM
+[33m9c72718[m[33m ([m[1;33mtag: [m[1;33mv1.0-engineering-handbook[m[33m)[m docs(project): add project management documents
+[33m1acf9db[m docs(project): complete engineering handbook appendices
+[33m52c6877[m docs(project): define engineering handbook maintenance
+[33m48fa177[m docs(project): define knowledge management standards
+[33m2700541[m docs(project): define risk management principles
+[33mf382a97[m docs(project): define change management process
+[33ma5c0cf8[m docs(project): define documentation maintenance process
+[33m33e7e19[m docs(project): define engineering decision process
+[33m5498d4c[m docs(project): define release management standards
+[33mb9e8e64[m docs(project): define incident management standards
+[33m3cdc97f[m docs(project): define backup and recovery standards
+[33m7f96c47[m docs(project): define monitoring standards
+[33m07f9c6b[m docs(project): define deployment standards
+[33m15a9f66[m docs(project): define refactoring guidelines
+[33m3753257[m docs(project): define technical debt management standards
+[33m94001ba[m docs(project): define quality assurance standards
+[33m13f4fca[m docs(project): define testing standards
+[33mc5203f6[m docs(project): define definition of done
+[33m81bce65[m docs(project): define definition of ready
+[33m060cb2e[m docs(project): define pull request standards
+[33me1c6df1[m docs(project): define code review guidelines
+[33mcbc2604[m docs(project): define commit message convention
+[33m6a64272[m docs(project): define branching strategy
+[33m97a55d8[m docs(project): define version control standards
+[33m14ba7b6[m docs(project): define performance engineering standards
+[33mceb913f[m docs(project): define security standards
+[33m634fa33[m docs(project): define dependency management standards
+[33mf1bfa3b[m docs(project): define configuration management standards
+[33m4fd65d3[m docs(project): define logging standards
+[33mdc2828f[m docs(project): define exception handling standards
+[33m9851ae8[m docs(project): define error handling standards
+[33m3b357c3[m docs(project): define naming conventions
+[33m466b019[m docs(project): define coding standards
+[33m82496a6[m docs(project): define integration standards
+[33mb36d54a[m docs(project): define database design standards
+[33ma661e39[m docs(project): define API design standards
+[33m20d4a4f[m docs(project): define application architecture standards
+[33mdb2cc84[m docs(project): define design principles
+[33m0884cd4[m docs(project): define architecture principles
+[33ma8fa926[m docs(project): add Engineering Handbook structure and remaining section placeholders
+[33m6359473[m docs(project): define documentation standards
+[33ma6c5f0f[m docs(project): define engineering principles
+[33m5676793[m docs(project): define business objectives engineering alignment
+[33m444b475[m docs(project): define QuickBite project mission
+[33mc42c27b[m docs(project): define QuickBite project vision
+[33m585870e[m docs(project): add Project Overview to Engineering Handbook
+[33m20db703[m docs(project): add Engineering Handbook foundation and governance
+[33mf25c02b[m docs(srs): complete Review & Rating module with 31 production-ready use cases
+[33me2f8d45[m docs(srs): complete Customer Support module (3.9)
+[33m5023949[m docs(srs): complete Delivery Management use cases (3.8.1-3.8.26)
+[33m4a91986[m docs(srs): complete modules 3.6 Payment and 3.7 Order Management
+[33m545990e[m restore: recover SRS.md content
+[33m747ee35[m docs(srs): complete checkout workflow use cases (3.5.1-3.5.25)
+[33m8df17ab[m docs(srs): complete Shopping Cart module (3.4)
+[33mfc9cef9[m docs(srs): complete Menu Browsing & Discovery use cases (3.3.1-3.3.25)
+[33meba8003[m docs(srs): reorganize functional requirements into module documents
+[33m773700b[m docs(srs): complete functional requirements through FR-3.2.44
+[33m5b369e4[m docs(srs): finalize Customer Module functional requirements
+[33mcc4559d[m docs(srs): complete FR-3.1.4 Mobile Number Verification specification
+[33me768677[m docs(srs): complete FR-3.1.3 Email Verification specification
+[33mcbdc467[m docs(srs): complete FR-3.1.2 Customer Login specification
+[33m155bda7[m docs(srs): complete FR-3.1.1 Customer Registration specification
+[33m1a3debd[m docs(srs): complete overall description section
+[33m31f62d4[m docs(srs): complete introduction section
+[33m1518b6b[m docs(srs): initialize requirement engineering documents
+[33m1d7a6a0[m docs(brd): finalize Business Requirement Document (v1.0)
+[33m9c3fa87[m[33m ([m[1;32mbackup-before-author-fix[m[33m)[m docs(brd): define business rules, assumptions and constraints
+[33mbf1717b[m docs(brd): define business rules, assumptions and constraints
+[33me906ab9[m docs(brd): complete target users and MVP scope sections
+[33ma59b9b5[m docs(brd): complete target users and MVP scope sections
+[33mb0feb48[m docs(brd): add stakeholder and target user analysis
+[33m34637e9[m docs(brd): add stakeholder and target user analysis
+[33m4b7a346[m docs(brd): add business problem statement and business objectives
+[33m8a7443e[m docs(brd): add business problem statement and business objectives
+[33m44550d1[m docs(brd): add business problem statement and business objectives
+[33m5de5d85[m docs(brd): add business problem statement and business objectives
+[33m547727a[m docs(brd): add metadata, executive summary and project overview
+[33me8d7143[m docs(brd): add metadata, executive summary and project overview
+[33mc450c41[m Initial commit
+[33m2e3b2be[m Initial commit
